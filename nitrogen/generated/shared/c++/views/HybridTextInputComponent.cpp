@@ -25,14 +25,14 @@ namespace margelo::nitro::nativeui::views {
                                              const HybridTextInputProps& sourceProps,
                                              const react::RawProps& rawProps):
     react::ViewProps(context, sourceProps, rawProps, filterObjectKeys),
-    isRed([&]() -> CachedProp<bool> {
+    label([&]() -> CachedProp<std::optional<std::string>> {
       try {
-        const react::RawValue* rawValue = rawProps.at("isRed", nullptr, nullptr);
-        if (rawValue == nullptr) return sourceProps.isRed;
+        const react::RawValue* rawValue = rawProps.at("label", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.label;
         const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
-        return CachedProp<bool>::fromRawValue(*runtime, value, sourceProps.isRed);
+        return CachedProp<std::optional<std::string>>::fromRawValue(*runtime, value, sourceProps.label);
       } catch (const std::exception& exc) {
-        throw std::runtime_error(std::string("TextInput.isRed: ") + exc.what());
+        throw std::runtime_error(std::string("TextInput.label: ") + exc.what());
       }
     }()),
     hybridRef([&]() -> CachedProp<std::optional<std::function<void(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& /* ref */)>>> {
@@ -48,12 +48,12 @@ namespace margelo::nitro::nativeui::views {
 
   HybridTextInputProps::HybridTextInputProps(const HybridTextInputProps& other):
     react::ViewProps(),
-    isRed(other.isRed),
+    label(other.label),
     hybridRef(other.hybridRef) { }
 
   bool HybridTextInputProps::filterObjectKeys(const std::string& propName) {
     switch (hashString(propName)) {
-      case hashString("isRed"): return true;
+      case hashString("label"): return true;
       case hashString("hybridRef"): return true;
       default: return false;
     }
@@ -78,6 +78,28 @@ namespace margelo::nitro::nativeui::views {
     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
     auto& concreteShadowNode = dynamic_cast<HybridTextInputShadowNode&>(shadowNode);
     const HybridTextInputProps& props = concreteShadowNode.getConcreteProps();
+    const auto stateData = concreteShadowNode.getStateData();
+
+    auto width = stateData._width;
+    auto height = stateData._height;
+
+    if (!isnan(width) or !isnan(height)) {
+        auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
+
+        // The node has width and/or height set as style props, so we should not override it
+        auto widthProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Width);
+        auto heightProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Height);
+
+        if (widthProp.value().isDefined()) {
+            // view has fixed dimension size set in props, so we should not autosize it in that axis
+            width = widthProp.value().unwrap();
+        }
+        if (heightProp.value().isDefined()) {
+            height = heightProp.value().unwrap();
+        }
+
+        concreteShadowNode.setSize({width, height});
+    }
     HybridTextInputState state;
     state.setProps(props);
     concreteShadowNode.setStateData(std::move(state));

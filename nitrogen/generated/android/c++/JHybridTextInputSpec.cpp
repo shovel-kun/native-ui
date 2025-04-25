@@ -9,7 +9,8 @@
 
 
 
-
+#include <optional>
+#include <string>
 
 namespace margelo::nitro::nativeui {
 
@@ -29,14 +30,14 @@ namespace margelo::nitro::nativeui {
   }
 
   // Properties
-  bool JHybridTextInputSpec::getIsRed() {
-    static const auto method = javaClassStatic()->getMethod<jboolean()>("isRed");
+  std::optional<std::string> JHybridTextInputSpec::getLabel() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getLabel");
     auto __result = method(_javaPart);
-    return static_cast<bool>(__result);
+    return __result != nullptr ? std::make_optional(__result->toStdString()) : std::nullopt;
   }
-  void JHybridTextInputSpec::setIsRed(bool isRed) {
-    static const auto method = javaClassStatic()->getMethod<void(jboolean /* isRed */)>("setRed");
-    method(_javaPart, isRed);
+  void JHybridTextInputSpec::setLabel(const std::optional<std::string>& label) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* label */)>("setLabel");
+    method(_javaPart, label.has_value() ? jni::make_jstring(label.value()) : nullptr);
   }
 
   // Methods

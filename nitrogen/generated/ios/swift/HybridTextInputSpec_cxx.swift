@@ -97,14 +97,26 @@ public class HybridTextInputSpec_cxx {
   }
 
   // Properties
-  public final var isRed: Bool {
+  public final var label: bridge.std__optional_std__string_ {
     @inline(__always)
     get {
-      return self.__implementation.isRed
+      return { () -> bridge.std__optional_std__string_ in
+        if let __unwrappedValue = self.__implementation.label {
+          return bridge.create_std__optional_std__string_(std.string(__unwrappedValue))
+        } else {
+          return .init()
+        }
+      }()
     }
     @inline(__always)
     set {
-      self.__implementation.isRed = newValue
+      self.__implementation.label = { () -> String? in
+        if let __unwrapped = newValue.value {
+          return String(__unwrapped)
+        } else {
+          return nil
+        }
+      }()
     }
   }
 

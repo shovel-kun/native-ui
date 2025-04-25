@@ -14,6 +14,7 @@ import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.StateWrapper
 import com.facebook.react.uimanager.ThemedReactContext
 import com.nativeui.*
+import com.nativeui.views.*
 
 /**
  * Represents the React Native `ViewManager` for the "TextInput" Nitro HybridView.
@@ -41,6 +42,8 @@ class HybridTextInputManager: SimpleViewManager<View>() {
     // 1. Downcast state
     val stateWrapperImpl = stateWrapper as? StateWrapperImpl ?: throw Error("StateWrapper uses a different implementation!")
     val hybridView = views[view] ?: throw Error("Couldn't find view $view in local views table!")
+    val view = hybridView.view as? NativeView ?: return null
+    view.stateWrapper = stateWrapper
 
     // 2. Update each prop individually
     hybridView.beforeUpdate()

@@ -17,6 +17,8 @@
 #include <react/renderer/components/view/ViewProps.h>
 
 #include <optional>
+#include <string>
+#include <optional>
 #include <functional>
 #include <memory>
 #include "HybridTextInputSpec.hpp"
@@ -42,7 +44,7 @@ namespace margelo::nitro::nativeui::views {
                          const react::RawProps& rawProps);
 
   public:
-    CachedProp<bool> isRed;
+    CachedProp<std::optional<std::string>> label;
     CachedProp<std::optional<std::function<void(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& /* ref */)>>> hybridRef;
 
   private:
@@ -56,13 +58,28 @@ namespace margelo::nitro::nativeui::views {
   public:
     HybridTextInputState() = default;
 
+    HybridTextInputState(float width, float height) {
+        if (width >= 0) {
+            _width = width;
+        } else {
+            _width = std::numeric_limits<float>::quiet_NaN();
+        }
+        if (height >= 0) {
+            _height = height;
+        } else {
+            _height = std::numeric_limits<float>::quiet_NaN();
+        }
+    };
+
   public:
     void setProps(const HybridTextInputProps& props) { _props.emplace(props); }
     const std::optional<HybridTextInputProps>& getProps() const { return _props; }
 
   public:
 #ifdef ANDROID
-  HybridTextInputState(const HybridTextInputState& /* previousState */, folly::dynamic /* data */) {}
+  HybridTextInputState(const HybridTextInputState& /* previousState */, folly::dynamic data)
+      : _width((float)data["width"].getDouble()),
+        _height((float)data["height"].getDouble()){};
   folly::dynamic getDynamic() const {
     throw std::runtime_error("HybridTextInputState does not support folly!");
   }
@@ -70,6 +87,9 @@ namespace margelo::nitro::nativeui::views {
     throw std::runtime_error("HybridTextInputState does not support MapBuffer!");
   };
 #endif
+
+  float _width = std::numeric_limits<float>::quiet_NaN();
+  float _height = std::numeric_limits<float>::quiet_NaN();
 
   private:
     std::optional<HybridTextInputProps> _props;

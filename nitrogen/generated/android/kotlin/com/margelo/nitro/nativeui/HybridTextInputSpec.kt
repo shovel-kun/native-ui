@@ -42,7 +42,7 @@ abstract class HybridTextInputSpec: HybridView() {
   @get:Keep
   @set:DoNotStrip
   @set:Keep
-  abstract var isRed: Boolean
+  abstract var label: String?
 
   // Methods
   

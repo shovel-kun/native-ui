@@ -1,6 +1,5 @@
 package com.nativeui
 
-import android.graphics.Color
 import androidx.annotation.Keep
 import com.facebook.proguard.annotations.DoNotStrip
 import com.facebook.react.uimanager.ThemedReactContext
@@ -13,10 +12,10 @@ class HybridTextInput(val context: ThemedReactContext): HybridTextInputSpec() {
     override val view = TextInputView(context)
 
     // Props
-    private var _isRed = false
-    override var isRed: Boolean
-        get() = _isRed
+    override var label: String? = null
         set(value) {
-            _isRed = value
+            if (field == value) return
+            field = value
+//            view.setLabel(value)
         }
 }

@@ -14,6 +14,8 @@ namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 // Include C++ defined types
 #include "HybridTextInputSpec.hpp"
 #include <memory>
+#include <optional>
+#include <string>
 
 // C++ helpers for Swift
 #include "NativeUi-Swift-Cxx-Bridge.hpp"

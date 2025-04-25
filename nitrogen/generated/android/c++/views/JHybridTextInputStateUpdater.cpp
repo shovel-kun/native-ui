@@ -28,8 +28,8 @@ void JHybridTextInputStateUpdater::updateViewProps(jni::alias_ref<jni::JClass> /
     throw std::runtime_error("HybridTextInputState's data doesn't contain any props!");
   }
   const HybridTextInputProps& props = maybeProps.value();
-  if (props.isRed.isDirty) {
-    view->setIsRed(props.isRed.value);
+  if (props.label.isDirty) {
+    view->setLabel(props.label.value);
     // TODO: Set isDirty = false
   }
 

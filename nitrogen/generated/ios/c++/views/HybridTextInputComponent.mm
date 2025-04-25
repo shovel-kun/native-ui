@@ -71,10 +71,10 @@ using namespace margelo::nitro::nativeui::views;
   // 2. Update each prop individually
   swiftPart.beforeUpdate();
 
-  // isRed: boolean
-  if (newViewProps.isRed.isDirty) {
-    swiftPart.setIsRed(newViewProps.isRed.value);
-    newViewProps.isRed.isDirty = false;
+  // label: optional
+  if (newViewProps.label.isDirty) {
+    swiftPart.setLabel(newViewProps.label.value);
+    newViewProps.label.isDirty = false;
   }
 
   swiftPart.afterUpdate();

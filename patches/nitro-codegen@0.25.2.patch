@@ -1,0 +1,188 @@
+diff --git a/node_modules/nitro-codegen/.bun-tag-1632e4e5dfd478d6 b/.bun-tag-1632e4e5dfd478d6
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-614df7cc6bedea53 b/.bun-tag-614df7cc6bedea53
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-89c417428afedad9 b/.bun-tag-89c417428afedad9
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-9d073089b18546a7 b/.bun-tag-9d073089b18546a7
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-b1244009aaa7ad3b b/.bun-tag-b1244009aaa7ad3b
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-eee9247104c9a1ef b/.bun-tag-eee9247104c9a1ef
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-ff1f25e6a1310bf5 b/.bun-tag-ff1f25e6a1310bf5
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/lib/views/CppHybridViewComponent.js b/lib/views/CppHybridViewComponent.js
+index 329cac0a8c95a8051f9f7aee320764c97025d0ec..d257867e8389c774d12626763cb16e40753338a7 100644
+--- a/lib/views/CppHybridViewComponent.js
++++ b/lib/views/CppHybridViewComponent.js
+@@ -92,13 +92,28 @@ namespace ${namespace} {
+   public:
+     ${stateClassName}() = default;
+ 
++    ${stateClassName}(float width, float height) {
++        if (width >= 0) {
++            _width = width;
++        } else {
++            _width = std::numeric_limits<float>::quiet_NaN();
++        }
++        if (height >= 0) {
++            _height = height;
++        } else {
++            _height = std::numeric_limits<float>::quiet_NaN();
++        }
++    };
++
+   public:
+     void setProps(const ${propsClassName}& props) { _props.emplace(props); }
+     const std::optional<${propsClassName}>& getProps() const { return _props; }
+ 
+   public:
+ #ifdef ANDROID
+-  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic /* data */) {}
++  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic data)
++      : _width((float)data["width"].getDouble()),
++        _height((float)data["height"].getDouble()){};
+   folly::dynamic getDynamic() const {
+     throw std::runtime_error("${stateClassName} does not support folly!");
+   }
+@@ -107,6 +122,9 @@ namespace ${namespace} {
+   };
+ #endif
+ 
++  float _width = std::numeric_limits<float>::quiet_NaN();
++  float _height = std::numeric_limits<float>::quiet_NaN();
++
+   private:
+     std::optional<${propsClassName}> _props;
+   };
+@@ -225,6 +243,28 @@ namespace ${namespace} {
+     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
+     auto& concreteShadowNode = dynamic_cast<${shadowNodeClassName}&>(shadowNode);
+     const ${propsClassName}& props = concreteShadowNode.getConcreteProps();
++    const auto stateData = concreteShadowNode.getStateData();
++
++    auto width = stateData._width;
++    auto height = stateData._height;
++
++    if (!isnan(width) or !isnan(height)) {
++        auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
++
++        // The node has width and/or height set as style props, so we should not override it
++        auto widthProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Width);
++        auto heightProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Height);
++
++        if (widthProp.value().isDefined()) {
++            // view has fixed dimension size set in props, so we should not autosize it in that axis
++            width = widthProp.value().unwrap();
++        }
++        if (heightProp.value().isDefined()) {
++            height = heightProp.value().unwrap();
++        }
++
++        concreteShadowNode.setSize({width, height});
++    }
+     ${stateClassName} state;
+     state.setProps(props);
+     concreteShadowNode.setStateData(std::move(state));
+diff --git a/lib/views/kotlin/KotlinHybridViewManager.js b/lib/views/kotlin/KotlinHybridViewManager.js
+index 86376f1edc0c76a9be30681e86ee72fc4476050c..2e7a2d8535c3914108ce9bbfcc3895f654d8186e 100644
+--- a/lib/views/kotlin/KotlinHybridViewManager.js
++++ b/lib/views/kotlin/KotlinHybridViewManager.js
+@@ -29,6 +29,7 @@ import com.facebook.react.uimanager.SimpleViewManager
+ import com.facebook.react.uimanager.StateWrapper
+ import com.facebook.react.uimanager.ThemedReactContext
+ import ${javaNamespace}.*
++import com.nativeui.views.*
+ 
+ /**
+  * Represents the React Native \`ViewManager\` for the "${spec.name}" Nitro HybridView.
+@@ -56,6 +57,8 @@ class ${manager}: SimpleViewManager<View>() {
+     // 1. Downcast state
+     val stateWrapperImpl = stateWrapper as? StateWrapperImpl ?: throw Error("StateWrapper uses a different implementation!")
+     val hybridView = views[view] ?: throw Error("Couldn't find view $view in local views table!")
++    val view = hybridView.view as? NativeView ?: return null
++    view.stateWrapper = stateWrapper
+ 
+     // 2. Update each prop individually
+     hybridView.beforeUpdate()
+diff --git a/src/views/CppHybridViewComponent.ts b/src/views/CppHybridViewComponent.ts
+index da6dbf57db7f3af59279de8d0e0af4f4ec6e55c2..6ad93b8d700328c1fb668eb4af0b8ef2993c8739 100644
+--- a/src/views/CppHybridViewComponent.ts
++++ b/src/views/CppHybridViewComponent.ts
+@@ -132,13 +132,28 @@ namespace ${namespace} {
+   public:
+     ${stateClassName}() = default;
+ 
++    ${stateClassName}(float width, float height) {
++        if (width >= 0) {
++            _width = width;
++        } else {
++            _width = std::numeric_limits<float>::quiet_NaN();
++        }
++        if (height >= 0) {
++            _height = height;
++        } else {
++            _height = std::numeric_limits<float>::quiet_NaN();
++        }
++    };
++
+   public:
+     void setProps(const ${propsClassName}& props) { _props.emplace(props); }
+     const std::optional<${propsClassName}>& getProps() const { return _props; }
+ 
+   public:
+ #ifdef ANDROID
+-  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic /* data */) {}
++  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic data)
++      : _width((float)data["width"].getDouble()),
++        _height((float)data["height"].getDouble()){};
+   folly::dynamic getDynamic() const {
+     throw std::runtime_error("${stateClassName} does not support folly!");
+   }
+@@ -147,6 +162,9 @@ namespace ${namespace} {
+   };
+ #endif
+ 
++  float _width = std::numeric_limits<float>::quiet_NaN();
++  float _height = std::numeric_limits<float>::quiet_NaN();
++
+   private:
+     std::optional<${propsClassName}> _props;
+   };
+@@ -271,6 +289,28 @@ namespace ${namespace} {
+     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
+     auto& concreteShadowNode = dynamic_cast<${shadowNodeClassName}&>(shadowNode);
+     const ${propsClassName}& props = concreteShadowNode.getConcreteProps();
++    const auto stateData = concreteShadowNode.getStateData();
++
++    auto width = stateData._width;
++    auto height = stateData._height;
++
++    if (!isnan(width) or !isnan(height)) {
++        auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
++
++        // The node has width and/or height set as style props, so we should not override it
++        auto widthProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Width);
++        auto heightProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Height);
++
++        if (widthProp.value().isDefined()) {
++            // view has fixed dimension size set in props, so we should not autosize it in that axis
++            width = widthProp.value().unwrap();
++        }
++        if (heightProp.value().isDefined()) {
++            height = heightProp.value().unwrap();
++        }
++
++        concreteShadowNode.setSize({width, height});
++    }
+     ${stateClassName} state;
+     state.setProps(props);
+     concreteShadowNode.setStateData(std::move(state));

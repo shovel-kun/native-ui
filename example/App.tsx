@@ -5,7 +5,7 @@ import {TextInput} from '@shovel-kun/native-ui';
 function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
-      <TextInput isRed={true} style={styles.view} />
+      <TextInput label={'hi'} />
     </View>
   );
 }

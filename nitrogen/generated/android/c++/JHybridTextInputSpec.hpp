@@ -47,8 +47,8 @@ namespace margelo::nitro::nativeui {
 
   public:
     // Properties
-    bool getIsRed() override;
-    void setIsRed(bool isRed) override;
+    std::optional<std::string> getLabel() override;
+    void setLabel(const std::optional<std::string>& label) override;
 
   public:
     // Methods

@@ -14,7 +14,8 @@ namespace NativeUi { class HybridTextInputSpec_cxx; }
 
 
 
-
+#include <optional>
+#include <string>
 
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
@@ -51,11 +52,12 @@ namespace margelo::nitro::nativeui {
 
   public:
     // Properties
-    inline bool getIsRed() noexcept override {
-      return _swiftPart.isRed();
+    inline std::optional<std::string> getLabel() noexcept override {
+      auto __result = _swiftPart.getLabel();
+      return __result;
     }
-    inline void setIsRed(bool isRed) noexcept override {
-      _swiftPart.setIsRed(std::forward<decltype(isRed)>(isRed));
+    inline void setLabel(const std::optional<std::string>& label) noexcept override {
+      _swiftPart.setLabel(label);
     }
 
   public:

@@ -6,6 +6,9 @@ import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.facebook.react.uimanager.ThemedReactContext
 import com.nativeui.views.AutoSizingComposable
 import com.nativeui.views.Direction
@@ -14,6 +17,7 @@ import java.util.EnumSet
 
 @SuppressLint("ViewConstructor")
 class TextInputView(context: ThemedReactContext): NativeComposeView(context, withHostingView = true )  {
+    var label by mutableStateOf<String?>(null)
 
     @Composable
     override fun Content() {
@@ -23,7 +27,7 @@ class TextInputView(context: ThemedReactContext): NativeComposeView(context, wit
                     state = rememberTextFieldState(),
                     lineLimits = TextFieldLineLimits.SingleLine,
                     placeholder = { Text("Placeholder") },
-                    label = { Text("Label") },
+                    label = label?.let { { Text(it) } },
                 )
             }
         }

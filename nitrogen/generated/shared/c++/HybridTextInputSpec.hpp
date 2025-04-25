@@ -15,7 +15,8 @@
 
 
 
-
+#include <optional>
+#include <string>
 
 namespace margelo::nitro::nativeui {
 
@@ -44,8 +45,8 @@ namespace margelo::nitro::nativeui {
 
     public:
       // Properties
-      virtual bool getIsRed() = 0;
-      virtual void setIsRed(bool isRed) = 0;
+      virtual std::optional<std::string> getLabel() = 0;
+      virtual void setLabel(const std::optional<std::string>& label) = 0;
 
     public:
       // Methods

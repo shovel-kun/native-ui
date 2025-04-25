@@ -5,7 +5,7 @@ import type {
 } from 'react-native-nitro-modules'
 
 export interface TextInputProps extends HybridViewProps {
-  isRed: boolean
+  label?: string
 }
 
 export interface TextInputMethods extends HybridViewMethods {}
