@@ -8,11 +8,11 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `HybridNativeUiSpec` to properly resolve imports.
-namespace margelo::nitro::nativeui { class HybridNativeUiSpec; }
+// Forward declaration of `HybridTextInputSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 
 // Include C++ defined types
-#include "HybridNativeUiSpec.hpp"
+#include "HybridTextInputSpec.hpp"
 #include <memory>
 
 // C++ helpers for Swift
@@ -24,8 +24,8 @@ namespace margelo::nitro::nativeui { class HybridNativeUiSpec; }
 #include <NitroModules/RuntimeError.hpp>
 
 // Forward declarations of Swift defined types
-// Forward declaration of `HybridNativeUiSpec_cxx` to properly resolve imports.
-namespace NativeUi { class HybridNativeUiSpec_cxx; }
+// Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTextInputSpec_cxx; }
 
 // Include Swift defined types
 #if __has_include("NativeUi-Swift.h")

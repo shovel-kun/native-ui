@@ -10,7 +10,7 @@
 #import "NativeUi-Swift-Cxx-Umbrella.hpp"
 #import <type_traits>
 
-#include "HybridNativeUiSpecSwift.hpp"
+#include "HybridTextInputSpecSwift.hpp"
 
 @interface NativeUiAutolinking : NSObject
 @end
@@ -22,9 +22,9 @@
   using namespace margelo::nitro::nativeui;
 
   HybridObjectRegistry::registerHybridObjectConstructor(
-    "NativeUi",
+    "TextInput",
     []() -> std::shared_ptr<HybridObject> {
-      std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec> hybridObject = NativeUi::NativeUiAutolinking::createNativeUi();
+      std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec> hybridObject = NativeUi::NativeUiAutolinking::createTextInput();
       return hybridObject;
     }
   );

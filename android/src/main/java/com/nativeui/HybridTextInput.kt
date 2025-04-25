@@ -1,17 +1,16 @@
 package com.nativeui
 
 import android.graphics.Color
-import android.view.View
 import androidx.annotation.Keep
 import com.facebook.proguard.annotations.DoNotStrip
 import com.facebook.react.uimanager.ThemedReactContext
-import com.margelo.nitro.nativeui.HybridNativeUiSpec
+import com.margelo.nitro.nativeui.HybridTextInputSpec
 
 @Keep
 @DoNotStrip
-class HybridNativeUi(val context: ThemedReactContext): HybridNativeUiSpec() {
+class HybridTextInput(val context: ThemedReactContext): HybridTextInputSpec() {
     // View
-    override val view: View = View(context)
+    override val view = TextInputView(context)
 
     // Props
     private var _isRed = false
@@ -19,9 +18,5 @@ class HybridNativeUi(val context: ThemedReactContext): HybridNativeUiSpec() {
         get() = _isRed
         set(value) {
             _isRed = value
-            view.setBackgroundColor(
-                if (value) Color.RED
-                else Color.BLACK
-            )
         }
 }

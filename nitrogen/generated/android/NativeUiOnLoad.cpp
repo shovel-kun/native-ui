@@ -15,8 +15,8 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
-#include "JHybridNativeUiSpec.hpp"
-#include "views/JHybridNativeUiStateUpdater.hpp"
+#include "JHybridTextInputSpec.hpp"
+#include "views/JHybridTextInputStateUpdater.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 #include <NitroModules/DefaultConstructableObject.hpp>
 
@@ -29,17 +29,17 @@ int initialize(JavaVM* vm) {
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
-    margelo::nitro::nativeui::JHybridNativeUiSpec::registerNatives();
-    margelo::nitro::nativeui::views::JHybridNativeUiStateUpdater::registerNatives();
+    margelo::nitro::nativeui::JHybridTextInputSpec::registerNatives();
+    margelo::nitro::nativeui::views::JHybridTextInputStateUpdater::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(
-      "NativeUi",
+      "TextInput",
       []() -> std::shared_ptr<HybridObject> {
-        static DefaultConstructableObject<JHybridNativeUiSpec::javaobject> object("com/nativeui/HybridNativeUi");
+        static DefaultConstructableObject<JHybridTextInputSpec::javaobject> object("com/nativeui/HybridTextInput");
         auto instance = object.create();
         auto globalRef = jni::make_global(instance);
-        return JNISharedPtr::make_shared_from_jni<JHybridNativeUiSpec>(globalRef);
+        return JNISharedPtr::make_shared_from_jni<JHybridTextInputSpec>(globalRef);
       }
     );
   });

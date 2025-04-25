@@ -32,7 +32,7 @@ public class NativeUiPackage extends TurboReactPackage {
   @Override
   public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
     List<ViewManager> viewManagers = new ArrayList<>();
-    viewManagers.add(new HybridNativeUiManager());
+    viewManagers.add(new HybridTextInputManager());
     return viewManagers;
   }
 

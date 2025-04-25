@@ -5,7 +5,8 @@ buildscript {
   }
 
   dependencies {
-    classpath "com.android.tools.build:gradle:8.8.0"
+    classpath "com.android.tools.build:gradle:8.9.2"
+    classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.20"
   }
 }
 
@@ -19,8 +20,9 @@ def isNewArchitectureEnabled() {
 }
 
 apply plugin: "com.android.library"
-apply plugin: 'org.jetbrains.kotlin.android'
-apply from: '../nitrogen/generated/android/NativeUi+autolinking.gradle'
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "org.jetbrains.kotlin.plugin.compose"
+apply from: "../nitrogen/generated/android/NativeUi+autolinking.gradle"
 
 if (isNewArchitectureEnabled()) {
   apply plugin: "com.facebook.react"
@@ -110,6 +112,10 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
   }
 
+  buildFeatures {
+    compose true
+  }
+
   sourceSets {
     main {
       if (isNewArchitectureEnabled()) {
@@ -133,6 +139,11 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
+
+  implementation "androidx.compose.foundation:foundation-android:1.8.0"
+  implementation "androidx.compose.ui:ui-android:1.8.0"
+  implementation "androidx.compose.material3:material3:1.4.0-alpha13"
+  implementation "androidx.compose.material3:material3-android:1.4.0-alpha13"
 
   // Add a dependency on NitroModules
   implementation project(":react-native-nitro-modules")

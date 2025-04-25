@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {NativeUi} from '@shovel-kun/native-ui';
+import {TextInput} from '@shovel-kun/native-ui';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
-      <NativeUi isRed={true} style={styles.view} />
+      <TextInput isRed={true} style={styles.view} />
     </View>
   );
 }

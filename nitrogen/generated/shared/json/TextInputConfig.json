@@ -1,5 +1,5 @@
 {
-  "uiViewClassName": "NativeUi",
+  "uiViewClassName": "TextInput",
   "supportsRawText": false,
   "bubblingEventTypes": {},
   "directEventTypes": {},

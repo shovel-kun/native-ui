@@ -27,11 +27,11 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/NativeUiOnLoad.cpp
   # Shared Nitrogen C++ sources
-  ../nitrogen/generated/shared/c++/HybridNativeUiSpec.cpp
-  ../nitrogen/generated/shared/c++/views/HybridNativeUiComponent.cpp
+  ../nitrogen/generated/shared/c++/HybridTextInputSpec.cpp
+  ../nitrogen/generated/shared/c++/views/HybridTextInputComponent.cpp
   # Android-specific Nitrogen C++ sources
-  ../nitrogen/generated/android/c++/JHybridNativeUiSpec.cpp
-  ../nitrogen/generated/android/c++/views/JHybridNativeUiStateUpdater.cpp
+  ../nitrogen/generated/android/c++/JHybridTextInputSpec.cpp
+  ../nitrogen/generated/android/c++/views/JHybridTextInputStateUpdater.cpp
 )
 
 # Define a flag to check if we are building properly

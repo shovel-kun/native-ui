@@ -1,24 +1,19 @@
 {
   "$schema": "https://nitro.margelo.com/nitro.schema.json",
-  "cxxNamespace": [
-    "nativeui"
-  ],
+  "cxxNamespace": ["nativeui"],
   "ios": {
     "iosModuleName": "NativeUi"
   },
   "android": {
-    "androidNamespace": [
-      "nativeui"
-    ],
+    "androidNamespace": ["nativeui"],
     "androidCxxLibName": "NativeUi"
   },
   "autolinking": {
-    "NativeUi": {
-      "swift": "HybridNativeUi",
-      "kotlin": "HybridNativeUi"
+    "TextInput": {
+      "swift": "HybridTextInput",
+      "kotlin": "HybridTextInput"
     }
   },
-  "ignorePaths": [
-    "**/node_modules"
-  ]
+  "ignorePaths": ["**/node_modules"]
 }
+

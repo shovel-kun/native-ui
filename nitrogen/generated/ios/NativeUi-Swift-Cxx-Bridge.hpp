@@ -8,15 +8,15 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `HybridNativeUiSpec` to properly resolve imports.
-namespace margelo::nitro::nativeui { class HybridNativeUiSpec; }
+// Forward declaration of `HybridTextInputSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 
 // Forward declarations of Swift defined types
-// Forward declaration of `HybridNativeUiSpec_cxx` to properly resolve imports.
-namespace NativeUi { class HybridNativeUiSpec_cxx; }
+// Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTextInputSpec_cxx; }
 
 // Include C++ defined types
-#include "HybridNativeUiSpec.hpp"
+#include "HybridTextInputSpec.hpp"
 #include <memory>
 
 /**
@@ -25,16 +25,16 @@ namespace NativeUi { class HybridNativeUiSpec_cxx; }
  */
 namespace margelo::nitro::nativeui::bridge::swift {
 
-  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
   /**
-   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>`.
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>`.
    */
-  using std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>;
-  std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_(void* _Nonnull swiftUnsafePointer);
-  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_ cppType);
+  using std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ cppType);
   
-  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>
-  using std__weak_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>;
-  inline std__weak_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>& strong) { return strong; }
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridTextInputSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& strong) { return strong; }
 
 } // namespace margelo::nitro::nativeui::bridge::swift

@@ -8,24 +8,24 @@
 #include "NativeUi-Swift-Cxx-Bridge.hpp"
 
 // Include C++ implementation defined types
-#include "HybridNativeUiSpecSwift.hpp"
+#include "HybridTextInputSpecSwift.hpp"
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
 namespace margelo::nitro::nativeui::bridge::swift {
 
-  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec>
-  std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_(void* _Nonnull swiftUnsafePointer) {
-    NativeUi::HybridNativeUiSpec_cxx swiftPart = NativeUi::HybridNativeUiSpec_cxx::fromUnsafe(swiftUnsafePointer);
-    return std::make_shared<margelo::nitro::nativeui::HybridNativeUiSpecSwift>(swiftPart);
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridTextInputSpec_cxx swiftPart = NativeUi::HybridTextInputSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridTextInputSpecSwift>(swiftPart);
   }
-  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridNativeUiSpec_ cppType) {
-    std::shared_ptr<margelo::nitro::nativeui::HybridNativeUiSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridNativeUiSpecSwift>(cppType);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridTextInputSpecSwift>(cppType);
   #ifdef NITRO_DEBUG
     if (swiftWrapper == nullptr) [[unlikely]] {
-      throw std::runtime_error("Class \"HybridNativeUiSpec\" is not implemented in Swift!");
+      throw std::runtime_error("Class \"HybridTextInputSpec\" is not implemented in Swift!");
     }
   #endif
-    NativeUi::HybridNativeUiSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    NativeUi::HybridTextInputSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
     return swiftPart.toUnsafe();
   }
 
