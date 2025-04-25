@@ -1,4 +1,4 @@
-# react-native-native-ui
+# native-ui
 
 ## Requirements
 
@@ -11,7 +11,7 @@
 ## Installation
 
 ```bash
-bun add react-native-native-ui react-native-nitro-modules
+bun add native-ui react-native-nitro-modules
 ```
 
 ## Credits

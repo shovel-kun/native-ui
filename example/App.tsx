@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { NativeUi } from 'react-native-native-ui';
+import {Text, View, StyleSheet} from 'react-native';
+import {NativeUi} from '@shovel-kun/native-ui';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
-        <NativeUi isRed={true} style={styles.view} />
+      <NativeUi isRed={true} style={styles.view} />
     </View>
   );
 }
@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
   },
   view: {
     width: 200,
-    height: 200
-  }});
+    height: 200,
+  },
+});
 
 export default App;

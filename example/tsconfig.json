@@ -4,7 +4,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "react-native-native-ui": ["../src"]
+      "@shovel-kun/native-ui": ["../src"]
     }
   }
 }
