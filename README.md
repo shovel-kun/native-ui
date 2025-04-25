@@ -2,16 +2,13 @@
 
 ## Requirements
 
-- React Native v0.76.0 or higher
+- React Native v0.78.0 or higher
 - Node 18.0.0 or higher
-
-> [!IMPORTANT]  
-> To Support `Nitro Views` you need to install React Native version v0.78.0 or higher.
 
 ## Installation
 
 ```bash
-bun add native-ui react-native-nitro-modules
+bun add @shovel-kun/native-ui react-native-nitro-modules
 ```
 
 ## Credits
