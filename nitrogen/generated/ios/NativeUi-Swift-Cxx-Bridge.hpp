@@ -8,18 +8,25 @@
 #pragma once
 
 // Forward declarations of C++ defined types
+// Forward declaration of `HybridDropdownMenuSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 
 // Forward declarations of Swift defined types
+// Forward declaration of `HybridDropdownMenuSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
 
 // Include C++ defined types
+#include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include <functional>
 #include <memory>
 #include <optional>
 #include <string>
+#include <vector>
 
 /**
  * Contains specialized versions of C++ templated types so they can be accessed from Swift,
@@ -34,6 +41,100 @@ namespace margelo::nitro::nativeui::bridge::swift {
   using std__optional_std__string_ = std::optional<std::string>;
   inline std::optional<std::string> create_std__optional_std__string_(const std::string& value) {
     return std::optional<std::string>(value);
+  }
+  
+  // pragma MARK: std::optional<double>
+  /**
+   * Specialized version of `std::optional<double>`.
+   */
+  using std__optional_double_ = std::optional<double>;
+  inline std::optional<double> create_std__optional_double_(const double& value) {
+    return std::optional<double>(value);
+  }
+  
+  // pragma MARK: std::function<void(double /* index */)>
+  /**
+   * Specialized version of `std::function<void(double)>`.
+   */
+  using Func_void_double = std::function<void(double /* index */)>;
+  /**
+   * Wrapper class for a `std::function<void(double / * index * /)>`, this can be used from Swift.
+   */
+  class Func_void_double_Wrapper final {
+  public:
+    explicit Func_void_double_Wrapper(std::function<void(double /* index */)>&& func): _function(std::make_shared<std::function<void(double /* index */)>>(std::move(func))) {}
+    inline void call(double index) const {
+      _function->operator()(index);
+    }
+  private:
+    std::shared_ptr<std::function<void(double /* index */)>> _function;
+  };
+  Func_void_double create_Func_void_double(void* _Nonnull swiftClosureWrapper);
+  inline Func_void_double_Wrapper wrap_Func_void_double(Func_void_double value) {
+    return Func_void_double_Wrapper(std::move(value));
+  }
+  
+  // pragma MARK: std::optional<std::function<void(double /* index */)>>
+  /**
+   * Specialized version of `std::optional<std::function<void(double / * index * /)>>`.
+   */
+  using std__optional_std__function_void_double____index______ = std::optional<std::function<void(double /* index */)>>;
+  inline std::optional<std::function<void(double /* index */)>> create_std__optional_std__function_void_double____index______(const std::function<void(double /* index */)>& value) {
+    return std::optional<std::function<void(double /* index */)>>(value);
+  }
+  
+  // pragma MARK: std::vector<std::string>
+  /**
+   * Specialized version of `std::vector<std::string>`.
+   */
+  using std__vector_std__string_ = std::vector<std::string>;
+  inline std::vector<std::string> create_std__vector_std__string_(size_t size) {
+    std::vector<std::string> vector;
+    vector.reserve(size);
+    return vector;
+  }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>
+  /**
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>`.
+   */
+  using std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>& strong) { return strong; }
+  
+  // pragma MARK: std::function<void(const std::string& /* value */)>
+  /**
+   * Specialized version of `std::function<void(const std::string&)>`.
+   */
+  using Func_void_std__string = std::function<void(const std::string& /* value */)>;
+  /**
+   * Wrapper class for a `std::function<void(const std::string& / * value * /)>`, this can be used from Swift.
+   */
+  class Func_void_std__string_Wrapper final {
+  public:
+    explicit Func_void_std__string_Wrapper(std::function<void(const std::string& /* value */)>&& func): _function(std::make_shared<std::function<void(const std::string& /* value */)>>(std::move(func))) {}
+    inline void call(std::string value) const {
+      _function->operator()(value);
+    }
+  private:
+    std::shared_ptr<std::function<void(const std::string& /* value */)>> _function;
+  };
+  Func_void_std__string create_Func_void_std__string(void* _Nonnull swiftClosureWrapper);
+  inline Func_void_std__string_Wrapper wrap_Func_void_std__string(Func_void_std__string value) {
+    return Func_void_std__string_Wrapper(std::move(value));
+  }
+  
+  // pragma MARK: std::optional<std::function<void(const std::string& /* value */)>>
+  /**
+   * Specialized version of `std::optional<std::function<void(const std::string& / * value * /)>>`.
+   */
+  using std__optional_std__function_void_const_std__string_____value______ = std::optional<std::function<void(const std::string& /* value */)>>;
+  inline std::optional<std::function<void(const std::string& /* value */)>> create_std__optional_std__function_void_const_std__string_____value______(const std::function<void(const std::string& /* value */)>& value) {
+    return std::optional<std::function<void(const std::string& /* value */)>>(value);
   }
   
   // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>

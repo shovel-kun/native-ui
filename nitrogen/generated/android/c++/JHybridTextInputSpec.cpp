@@ -11,6 +11,8 @@
 
 #include <optional>
 #include <string>
+#include <functional>
+#include "JFunc_void_std__string.hpp"
 
 namespace margelo::nitro::nativeui {
 
@@ -30,6 +32,42 @@ namespace margelo::nitro::nativeui {
   }
 
   // Properties
+  std::optional<std::string> JHybridTextInputSpec::getValue() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getValue");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(__result->toStdString()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setValue(const std::optional<std::string>& value) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* value */)>("setValue");
+    method(_javaPart, value.has_value() ? jni::make_jstring(value.value()) : nullptr);
+  }
+  std::optional<std::function<void(const std::string& /* value */)>> JHybridTextInputSpec::getOnValueChange() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<JFunc_void_std__string::javaobject>()>("getOnValueChange_cxx");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional([&]() -> std::function<void(const std::string& /* value */)> {
+      if (__result->isInstanceOf(JFunc_void_std__string_cxx::javaClassStatic())) [[likely]] {
+        auto downcast = jni::static_ref_cast<JFunc_void_std__string_cxx::javaobject>(__result);
+        return downcast->cthis()->getFunction();
+      } else {
+        return [__result](std::string value) -> void {
+          return __result->invoke(value);
+        };
+      }
+    }()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<JFunc_void_std__string::javaobject> /* onValueChange */)>("setOnValueChange_cxx");
+    method(_javaPart, onValueChange.has_value() ? JFunc_void_std__string_cxx::fromCpp(onValueChange.value()) : nullptr);
+  }
+  std::optional<std::string> JHybridTextInputSpec::getPlaceholder() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getPlaceholder");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(__result->toStdString()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setPlaceholder(const std::optional<std::string>& placeholder) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* placeholder */)>("setPlaceholder");
+    method(_javaPart, placeholder.has_value() ? jni::make_jstring(placeholder.value()) : nullptr);
+  }
   std::optional<std::string> JHybridTextInputSpec::getLabel() {
     static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getLabel");
     auto __result = method(_javaPart);

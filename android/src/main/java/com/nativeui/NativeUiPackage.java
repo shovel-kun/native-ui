@@ -11,7 +11,7 @@ import com.facebook.react.uimanager.ViewManager;
 import com.margelo.nitro.nativeui.*;
 import com.margelo.nitro.nativeui.views.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,9 +31,10 @@ public class NativeUiPackage extends TurboReactPackage {
   @NonNull
   @Override
   public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-    List<ViewManager> viewManagers = new ArrayList<>();
-    viewManagers.add(new HybridTextInputManager());
-    return viewManagers;
+    return Arrays.asList(
+      new HybridTextInputManager(),
+      new HybridDropdownMenuManager()
+    );
   }
 
   static {

@@ -5,6 +5,9 @@ import type {
 } from 'react-native-nitro-modules'
 
 export interface TextInputProps extends HybridViewProps {
+  value?: string
+  onValueChange?: (value: string) => void
+  placeholder?: string
   label?: string
 }
 

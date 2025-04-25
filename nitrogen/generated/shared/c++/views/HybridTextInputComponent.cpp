@@ -25,6 +25,36 @@ namespace margelo::nitro::nativeui::views {
                                              const HybridTextInputProps& sourceProps,
                                              const react::RawProps& rawProps):
     react::ViewProps(context, sourceProps, rawProps, filterObjectKeys),
+    value([&]() -> CachedProp<std::optional<std::string>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("value", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.value;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<std::string>>::fromRawValue(*runtime, value, sourceProps.value);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.value: ") + exc.what());
+      }
+    }()),
+    onValueChange([&]() -> CachedProp<std::optional<std::function<void(const std::string& /* value */)>>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("onValueChange", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.onValueChange;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<std::function<void(const std::string& /* value */)>>>::fromRawValue(*runtime, value.asObject(*runtime).getProperty(*runtime, "f"), sourceProps.onValueChange);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.onValueChange: ") + exc.what());
+      }
+    }()),
+    placeholder([&]() -> CachedProp<std::optional<std::string>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("placeholder", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.placeholder;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<std::string>>::fromRawValue(*runtime, value, sourceProps.placeholder);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.placeholder: ") + exc.what());
+      }
+    }()),
     label([&]() -> CachedProp<std::optional<std::string>> {
       try {
         const react::RawValue* rawValue = rawProps.at("label", nullptr, nullptr);
@@ -48,11 +78,17 @@ namespace margelo::nitro::nativeui::views {
 
   HybridTextInputProps::HybridTextInputProps(const HybridTextInputProps& other):
     react::ViewProps(),
+    value(other.value),
+    onValueChange(other.onValueChange),
+    placeholder(other.placeholder),
     label(other.label),
     hybridRef(other.hybridRef) { }
 
   bool HybridTextInputProps::filterObjectKeys(const std::string& propName) {
     switch (hashString(propName)) {
+      case hashString("value"): return true;
+      case hashString("onValueChange"): return true;
+      case hashString("placeholder"): return true;
       case hashString("label"): return true;
       case hashString("hybridRef"): return true;
       default: return false;

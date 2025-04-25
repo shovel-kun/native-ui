@@ -15,7 +15,11 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
+#include "JHybridDropdownMenuSpec.hpp"
+#include "JFunc_void_double.hpp"
+#include "views/JHybridDropdownMenuStateUpdater.hpp"
 #include "JHybridTextInputSpec.hpp"
+#include "JFunc_void_std__string.hpp"
 #include "views/JHybridTextInputStateUpdater.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 #include <NitroModules/DefaultConstructableObject.hpp>
@@ -29,7 +33,11 @@ int initialize(JavaVM* vm) {
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
+    margelo::nitro::nativeui::JHybridDropdownMenuSpec::registerNatives();
+    margelo::nitro::nativeui::JFunc_void_double_cxx::registerNatives();
+    margelo::nitro::nativeui::views::JHybridDropdownMenuStateUpdater::registerNatives();
     margelo::nitro::nativeui::JHybridTextInputSpec::registerNatives();
+    margelo::nitro::nativeui::JFunc_void_std__string_cxx::registerNatives();
     margelo::nitro::nativeui::views::JHybridTextInputStateUpdater::registerNatives();
 
     // Register Nitro Hybrid Objects
@@ -40,6 +48,15 @@ int initialize(JavaVM* vm) {
         auto instance = object.create();
         auto globalRef = jni::make_global(instance);
         return JNISharedPtr::make_shared_from_jni<JHybridTextInputSpec>(globalRef);
+      }
+    );
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "DropdownMenu",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridDropdownMenuSpec::javaobject> object("com/nativeui/HybridDropdownMenu");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridDropdownMenuSpec>(globalRef);
       }
     );
   });

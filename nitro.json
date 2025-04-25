@@ -12,8 +12,11 @@
     "TextInput": {
       "swift": "HybridTextInput",
       "kotlin": "HybridTextInput"
+    },
+    "DropdownMenu": {
+      "swift": "HybridDropdownMenu",
+      "kotlin": "HybridDropdownMenu"
     }
   },
   "ignorePaths": ["**/node_modules"]
 }
-

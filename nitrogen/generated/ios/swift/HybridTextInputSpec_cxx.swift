@@ -97,6 +97,83 @@ public class HybridTextInputSpec_cxx {
   }
 
   // Properties
+  public final var value: bridge.std__optional_std__string_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_std__string_ in
+        if let __unwrappedValue = self.__implementation.value {
+          return bridge.create_std__optional_std__string_(std.string(__unwrappedValue))
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.value = { () -> String? in
+        if let __unwrapped = newValue.value {
+          return String(__unwrapped)
+        } else {
+          return nil
+        }
+      }()
+    }
+  }
+  
+  public final var onValueChange: bridge.std__optional_std__function_void_const_std__string_____value______ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_std__function_void_const_std__string_____value______ in
+        if let __unwrappedValue = self.__implementation.onValueChange {
+          return bridge.create_std__optional_std__function_void_const_std__string_____value______({ () -> bridge.Func_void_std__string in
+            let __closureWrapper = Func_void_std__string(__unwrappedValue)
+            return bridge.create_Func_void_std__string(__closureWrapper.toUnsafe())
+          }())
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.onValueChange = { () -> ((_ value: String) -> Void)? in
+        if let __unwrapped = newValue.value {
+          return { () -> (String) -> Void in
+            let __wrappedFunction = bridge.wrap_Func_void_std__string(__unwrapped)
+            return { (__value: String) -> Void in
+              __wrappedFunction.call(std.string(__value))
+            }
+          }()
+        } else {
+          return nil
+        }
+      }()
+    }
+  }
+  
+  public final var placeholder: bridge.std__optional_std__string_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_std__string_ in
+        if let __unwrappedValue = self.__implementation.placeholder {
+          return bridge.create_std__optional_std__string_(std.string(__unwrappedValue))
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.placeholder = { () -> String? in
+        if let __unwrapped = newValue.value {
+          return String(__unwrapped)
+        } else {
+          return nil
+        }
+      }()
+    }
+  }
+  
   public final var label: bridge.std__optional_std__string_ {
     @inline(__always)
     get {

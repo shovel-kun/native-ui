@@ -11,6 +11,9 @@ import NitroModules
 /// See ``HybridTextInputSpec``
 public protocol HybridTextInputSpec_protocol: HybridObject, HybridView {
   // Properties
+  var value: String? { get set }
+  var onValueChange: ((_ value: String) -> Void)? { get set }
+  var placeholder: String? { get set }
   var label: String? { get set }
 
   // Methods

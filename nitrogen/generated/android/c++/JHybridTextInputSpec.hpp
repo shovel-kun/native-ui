@@ -47,6 +47,12 @@ namespace margelo::nitro::nativeui {
 
   public:
     // Properties
+    std::optional<std::string> getValue() override;
+    void setValue(const std::optional<std::string>& value) override;
+    std::optional<std::function<void(const std::string& /* value */)>> getOnValueChange() override;
+    void setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) override;
+    std::optional<std::string> getPlaceholder() override;
+    void setPlaceholder(const std::optional<std::string>& placeholder) override;
     std::optional<std::string> getLabel() override;
     void setLabel(const std::optional<std::string>& label) override;
 

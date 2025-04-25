@@ -14,6 +14,12 @@ namespace margelo::nitro::nativeui {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
+      prototype.registerHybridGetter("value", &HybridTextInputSpec::getValue);
+      prototype.registerHybridSetter("value", &HybridTextInputSpec::setValue);
+      prototype.registerHybridGetter("onValueChange", &HybridTextInputSpec::getOnValueChange);
+      prototype.registerHybridSetter("onValueChange", &HybridTextInputSpec::setOnValueChange);
+      prototype.registerHybridGetter("placeholder", &HybridTextInputSpec::getPlaceholder);
+      prototype.registerHybridSetter("placeholder", &HybridTextInputSpec::setPlaceholder);
       prototype.registerHybridGetter("label", &HybridTextInputSpec::getLabel);
       prototype.registerHybridSetter("label", &HybridTextInputSpec::setLabel);
     });

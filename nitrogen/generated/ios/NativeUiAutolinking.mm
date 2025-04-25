@@ -11,6 +11,7 @@
 #import <type_traits>
 
 #include "HybridTextInputSpecSwift.hpp"
+#include "HybridDropdownMenuSpecSwift.hpp"
 
 @interface NativeUiAutolinking : NSObject
 @end
@@ -25,6 +26,13 @@
     "TextInput",
     []() -> std::shared_ptr<HybridObject> {
       std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec> hybridObject = NativeUi::NativeUiAutolinking::createTextInput();
+      return hybridObject;
+    }
+  );
+  HybridObjectRegistry::registerHybridObjectConstructor(
+    "DropdownMenu",
+    []() -> std::shared_ptr<HybridObject> {
+      std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec> hybridObject = NativeUi::NativeUiAutolinking::createDropdownMenu();
       return hybridObject;
     }
   );

@@ -20,6 +20,13 @@
 #include <string>
 #include <optional>
 #include <functional>
+#include <string>
+#include <optional>
+#include <string>
+#include <optional>
+#include <string>
+#include <optional>
+#include <functional>
 #include <memory>
 #include "HybridTextInputSpec.hpp"
 
@@ -44,6 +51,9 @@ namespace margelo::nitro::nativeui::views {
                          const react::RawProps& rawProps);
 
   public:
+    CachedProp<std::optional<std::string>> value;
+    CachedProp<std::optional<std::function<void(const std::string& /* value */)>>> onValueChange;
+    CachedProp<std::optional<std::string>> placeholder;
     CachedProp<std::optional<std::string>> label;
     CachedProp<std::optional<std::function<void(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& /* ref */)>>> hybridRef;
 

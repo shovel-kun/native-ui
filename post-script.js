@@ -16,16 +16,37 @@ const androidWorkaround = async () => {
     'NativeUiOnLoad.cpp'
   )
 
-  const viewManagerFile = path.join(
+  const textInputViewManagerFile = path.join(
     process.cwd(),
     'nitrogen/generated/android/kotlin/com/margelo/nitro/nativeui/views',
     'HybridTextInputManager.kt'
   )
 
-  const viewManagerStr = await readFile(viewManagerFile, { encoding: 'utf8' })
+  const dropdownMenuViewManagerFile = path.join(
+    process.cwd(),
+    'nitrogen/generated/android/kotlin/com/margelo/nitro/nativeui/views',
+    'HybridDropdownMenuManager.kt'
+  )
+
+  const viewManagerStr = await readFile(textInputViewManagerFile, {
+    encoding: 'utf8',
+  })
   await writeFile(
-    viewManagerFile,
+    textInputViewManagerFile,
     viewManagerStr.replace(
+      /com\.margelo\.nitro\.nativeui\.\*/g,
+      'com.nativeui.*'
+    )
+  )
+
+  // dropdown menu
+  const dropdownMenuViewManagerStr = await readFile(
+    dropdownMenuViewManagerFile,
+    { encoding: 'utf8' }
+  )
+  await writeFile(
+    dropdownMenuViewManagerFile,
+    dropdownMenuViewManagerStr.replace(
       /com\.margelo\.nitro\.nativeui\.\*/g,
       'com.nativeui.*'
     )
@@ -35,4 +56,3 @@ const androidWorkaround = async () => {
   await writeFile(androidOnLoadFile, str.replace(/margelo\/nitro\//g, ''))
 }
 androidWorkaround()
-

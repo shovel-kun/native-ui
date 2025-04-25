@@ -1,13 +1,13 @@
 {
-  "uiViewClassName": "TextInput",
+  "uiViewClassName": "DropdownMenu",
   "supportsRawText": false,
   "bubblingEventTypes": {},
   "directEventTypes": {},
   "validAttributes": {
-    "value": true,
-    "onValueChange": true,
-    "placeholder": true,
     "label": true,
+    "selectedIndex": true,
+    "onOptionSelected": true,
+    "options": true,
     "hybridRef": true
   }
 }

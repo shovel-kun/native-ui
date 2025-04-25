@@ -4,6 +4,9 @@ index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2
 diff --git a/node_modules/nitro-codegen/.bun-tag-614df7cc6bedea53 b/.bun-tag-614df7cc6bedea53
 new file mode 100644
 index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-6386efa3bd659cfd b/.bun-tag-6386efa3bd659cfd
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/node_modules/nitro-codegen/.bun-tag-89c417428afedad9 b/.bun-tag-89c417428afedad9
 new file mode 100644
 index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
@@ -11,6 +14,9 @@ diff --git a/node_modules/nitro-codegen/.bun-tag-9d073089b18546a7 b/.bun-tag-9d0
 new file mode 100644
 index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/node_modules/nitro-codegen/.bun-tag-b1244009aaa7ad3b b/.bun-tag-b1244009aaa7ad3b
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/nitro-codegen/.bun-tag-bd1f9e908be6dbcb b/.bun-tag-bd1f9e908be6dbcb
 new file mode 100644
 index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/node_modules/nitro-codegen/.bun-tag-eee9247104c9a1ef b/.bun-tag-eee9247104c9a1ef
@@ -186,3 +192,17 @@ index da6dbf57db7f3af59279de8d0e0af4f4ec6e55c2..6ad93b8d700328c1fb668eb4af0b8ef2
      ${stateClassName} state;
      state.setProps(props);
      concreteShadowNode.setStateData(std::move(state));
+diff --git a/src/views/kotlin/KotlinHybridViewManager.ts b/src/views/kotlin/KotlinHybridViewManager.ts
+index e7a83c9d98d664a534caf2c031544344fcf6444b..17d63d77dfe0f9aee517b2c6dd4025f9ec5677cf 100644
+--- a/src/views/kotlin/KotlinHybridViewManager.ts
++++ b/src/views/kotlin/KotlinHybridViewManager.ts
+@@ -48,7 +48,8 @@ import com.facebook.react.uimanager.ReactStylesDiffMap
+ import com.facebook.react.uimanager.SimpleViewManager
+ import com.facebook.react.uimanager.StateWrapper
+ import com.facebook.react.uimanager.ThemedReactContext
+-import ${javaNamespace}.*
++import com.nativeui.*
++import com.nativeui.views.*
+ 
+ /**
+  * Represents the React Native \`ViewManager\` for the "${spec.name}" Nitro HybridView.

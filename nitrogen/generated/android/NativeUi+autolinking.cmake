@@ -27,9 +27,13 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/NativeUiOnLoad.cpp
   # Shared Nitrogen C++ sources
+  ../nitrogen/generated/shared/c++/HybridDropdownMenuSpec.cpp
+  ../nitrogen/generated/shared/c++/views/HybridDropdownMenuComponent.cpp
   ../nitrogen/generated/shared/c++/HybridTextInputSpec.cpp
   ../nitrogen/generated/shared/c++/views/HybridTextInputComponent.cpp
   # Android-specific Nitrogen C++ sources
+  ../nitrogen/generated/android/c++/JHybridDropdownMenuSpec.cpp
+  ../nitrogen/generated/android/c++/views/JHybridDropdownMenuStateUpdater.cpp
   ../nitrogen/generated/android/c++/JHybridTextInputSpec.cpp
   ../nitrogen/generated/android/c++/views/JHybridTextInputStateUpdater.cpp
 )

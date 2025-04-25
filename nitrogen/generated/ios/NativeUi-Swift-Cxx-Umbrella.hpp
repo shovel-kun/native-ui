@@ -8,14 +8,19 @@
 #pragma once
 
 // Forward declarations of C++ defined types
+// Forward declaration of `HybridDropdownMenuSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 
 // Include C++ defined types
+#include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include <functional>
 #include <memory>
 #include <optional>
 #include <string>
+#include <vector>
 
 // C++ helpers for Swift
 #include "NativeUi-Swift-Cxx-Bridge.hpp"
@@ -26,6 +31,8 @@ namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 #include <NitroModules/RuntimeError.hpp>
 
 // Forward declarations of Swift defined types
+// Forward declaration of `HybridDropdownMenuSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
 

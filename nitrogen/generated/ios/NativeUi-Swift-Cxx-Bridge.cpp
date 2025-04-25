@@ -8,11 +8,44 @@
 #include "NativeUi-Swift-Cxx-Bridge.hpp"
 
 // Include C++ implementation defined types
+#include "HybridDropdownMenuSpecSwift.hpp"
 #include "HybridTextInputSpecSwift.hpp"
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
 namespace margelo::nitro::nativeui::bridge::swift {
 
+  // pragma MARK: std::function<void(double /* index */)>
+  Func_void_double create_Func_void_double(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NativeUi::Func_void_double::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](double index) mutable -> void {
+      swiftClosure.call(index);
+    };
+  }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridDropdownMenuSpec_cxx swiftPart = NativeUi::HybridDropdownMenuSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridDropdownMenuSpecSwift>(swiftPart);
+  }
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridDropdownMenuSpecSwift>(cppType);
+  #ifdef NITRO_DEBUG
+    if (swiftWrapper == nullptr) [[unlikely]] {
+      throw std::runtime_error("Class \"HybridDropdownMenuSpec\" is not implemented in Swift!");
+    }
+  #endif
+    NativeUi::HybridDropdownMenuSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    return swiftPart.toUnsafe();
+  }
+  
+  // pragma MARK: std::function<void(const std::string& /* value */)>
+  Func_void_std__string create_Func_void_std__string(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NativeUi::Func_void_std__string::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)](const std::string& value) mutable -> void {
+      swiftClosure.call(value);
+    };
+  }
+  
   // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
   std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(void* _Nonnull swiftUnsafePointer) {
     NativeUi::HybridTextInputSpec_cxx swiftPart = NativeUi::HybridTextInputSpec_cxx::fromUnsafe(swiftUnsafePointer);
