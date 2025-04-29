@@ -25,24 +25,74 @@ namespace margelo::nitro::nativeui::views {
                                              const HybridTextInputProps& sourceProps,
                                              const react::RawProps& rawProps):
     react::ViewProps(context, sourceProps, rawProps, filterObjectKeys),
-    value([&]() -> CachedProp<std::optional<std::string>> {
+    defaultValue([&]() -> CachedProp<std::optional<std::string>> {
       try {
-        const react::RawValue* rawValue = rawProps.at("value", nullptr, nullptr);
-        if (rawValue == nullptr) return sourceProps.value;
+        const react::RawValue* rawValue = rawProps.at("defaultValue", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.defaultValue;
         const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
-        return CachedProp<std::optional<std::string>>::fromRawValue(*runtime, value, sourceProps.value);
+        return CachedProp<std::optional<std::string>>::fromRawValue(*runtime, value, sourceProps.defaultValue);
       } catch (const std::exception& exc) {
-        throw std::runtime_error(std::string("TextInput.value: ") + exc.what());
+        throw std::runtime_error(std::string("TextInput.defaultValue: ") + exc.what());
       }
     }()),
-    onValueChange([&]() -> CachedProp<std::optional<std::function<void(const std::string& /* value */)>>> {
+    onChangeText([&]() -> CachedProp<std::optional<std::function<void(const std::string& /* text */)>>> {
       try {
-        const react::RawValue* rawValue = rawProps.at("onValueChange", nullptr, nullptr);
-        if (rawValue == nullptr) return sourceProps.onValueChange;
+        const react::RawValue* rawValue = rawProps.at("onChangeText", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.onChangeText;
         const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
-        return CachedProp<std::optional<std::function<void(const std::string& /* value */)>>>::fromRawValue(*runtime, value.asObject(*runtime).getProperty(*runtime, "f"), sourceProps.onValueChange);
+        return CachedProp<std::optional<std::function<void(const std::string& /* text */)>>>::fromRawValue(*runtime, value.asObject(*runtime).getProperty(*runtime, "f"), sourceProps.onChangeText);
       } catch (const std::exception& exc) {
-        throw std::runtime_error(std::string("TextInput.onValueChange: ") + exc.what());
+        throw std::runtime_error(std::string("TextInput.onChangeText: ") + exc.what());
+      }
+    }()),
+    multiline([&]() -> CachedProp<std::optional<bool>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("multiline", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.multiline;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<bool>>::fromRawValue(*runtime, value, sourceProps.multiline);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.multiline: ") + exc.what());
+      }
+    }()),
+    numberOfLines([&]() -> CachedProp<std::optional<double>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("numberOfLines", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.numberOfLines;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<double>>::fromRawValue(*runtime, value, sourceProps.numberOfLines);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.numberOfLines: ") + exc.what());
+      }
+    }()),
+    keyboardType([&]() -> CachedProp<std::optional<TextInputKeyboardTypeOptions>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("keyboardType", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.keyboardType;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<TextInputKeyboardTypeOptions>>::fromRawValue(*runtime, value, sourceProps.keyboardType);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.keyboardType: ") + exc.what());
+      }
+    }()),
+    autocorrection([&]() -> CachedProp<std::optional<bool>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("autocorrection", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.autocorrection;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<bool>>::fromRawValue(*runtime, value, sourceProps.autocorrection);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.autocorrection: ") + exc.what());
+      }
+    }()),
+    variant([&]() -> CachedProp<std::optional<TextInputVariant>> {
+      try {
+        const react::RawValue* rawValue = rawProps.at("variant", nullptr, nullptr);
+        if (rawValue == nullptr) return sourceProps.variant;
+        const auto& [runtime, value] = (std::pair<jsi::Runtime*, jsi::Value>)*rawValue;
+        return CachedProp<std::optional<TextInputVariant>>::fromRawValue(*runtime, value, sourceProps.variant);
+      } catch (const std::exception& exc) {
+        throw std::runtime_error(std::string("TextInput.variant: ") + exc.what());
       }
     }()),
     placeholder([&]() -> CachedProp<std::optional<std::string>> {
@@ -78,16 +128,26 @@ namespace margelo::nitro::nativeui::views {
 
   HybridTextInputProps::HybridTextInputProps(const HybridTextInputProps& other):
     react::ViewProps(),
-    value(other.value),
-    onValueChange(other.onValueChange),
+    defaultValue(other.defaultValue),
+    onChangeText(other.onChangeText),
+    multiline(other.multiline),
+    numberOfLines(other.numberOfLines),
+    keyboardType(other.keyboardType),
+    autocorrection(other.autocorrection),
+    variant(other.variant),
     placeholder(other.placeholder),
     label(other.label),
     hybridRef(other.hybridRef) { }
 
   bool HybridTextInputProps::filterObjectKeys(const std::string& propName) {
     switch (hashString(propName)) {
-      case hashString("value"): return true;
-      case hashString("onValueChange"): return true;
+      case hashString("defaultValue"): return true;
+      case hashString("onChangeText"): return true;
+      case hashString("multiline"): return true;
+      case hashString("numberOfLines"): return true;
+      case hashString("keyboardType"): return true;
+      case hashString("autocorrection"): return true;
+      case hashString("variant"): return true;
       case hashString("placeholder"): return true;
       case hashString("label"): return true;
       case hashString("hybridRef"): return true;
@@ -114,10 +174,10 @@ namespace margelo::nitro::nativeui::views {
     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
     auto& concreteShadowNode = dynamic_cast<HybridTextInputShadowNode&>(shadowNode);
     const HybridTextInputProps& props = concreteShadowNode.getConcreteProps();
-    const auto stateData = concreteShadowNode.getStateData();
+    HybridTextInputState state = concreteShadowNode.getStateData();
 
-    auto width = stateData._width;
-    auto height = stateData._height;
+    auto width = state._width;
+    auto height = state._height;
 
     if (!isnan(width) or !isnan(height)) {
         auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
@@ -136,7 +196,6 @@ namespace margelo::nitro::nativeui::views {
 
         concreteShadowNode.setSize({width, height});
     }
-    HybridTextInputState state;
     state.setProps(props);
     concreteShadowNode.setStateData(std::move(state));
   }

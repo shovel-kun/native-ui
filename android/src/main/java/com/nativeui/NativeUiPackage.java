@@ -33,7 +33,8 @@ public class NativeUiPackage extends TurboReactPackage {
   public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
     return Arrays.asList(
       new HybridTextInputManager(),
-      new HybridDropdownMenuManager()
+      new HybridDropdownMenuManager(),
+      new HybridTriStateCheckboxManager()
     );
   }
 

@@ -7,12 +7,19 @@
 
 #include "JHybridTextInputSpec.hpp"
 
-
+// Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
+// Forward declaration of `TextInputVariant` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 
 #include <optional>
 #include <string>
 #include <functional>
 #include "JFunc_void_std__string.hpp"
+#include "TextInputKeyboardTypeOptions.hpp"
+#include "JTextInputKeyboardTypeOptions.hpp"
+#include "TextInputVariant.hpp"
+#include "JTextInputVariant.hpp"
 
 namespace margelo::nitro::nativeui {
 
@@ -32,32 +39,77 @@ namespace margelo::nitro::nativeui {
   }
 
   // Properties
-  std::optional<std::string> JHybridTextInputSpec::getValue() {
-    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getValue");
+  std::optional<std::string> JHybridTextInputSpec::getDefaultValue() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getDefaultValue");
     auto __result = method(_javaPart);
     return __result != nullptr ? std::make_optional(__result->toStdString()) : std::nullopt;
   }
-  void JHybridTextInputSpec::setValue(const std::optional<std::string>& value) {
-    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* value */)>("setValue");
-    method(_javaPart, value.has_value() ? jni::make_jstring(value.value()) : nullptr);
+  void JHybridTextInputSpec::setDefaultValue(const std::optional<std::string>& defaultValue) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* defaultValue */)>("setDefaultValue");
+    method(_javaPart, defaultValue.has_value() ? jni::make_jstring(defaultValue.value()) : nullptr);
   }
-  std::optional<std::function<void(const std::string& /* value */)>> JHybridTextInputSpec::getOnValueChange() {
-    static const auto method = javaClassStatic()->getMethod<jni::local_ref<JFunc_void_std__string::javaobject>()>("getOnValueChange_cxx");
+  std::optional<std::function<void(const std::string& /* text */)>> JHybridTextInputSpec::getOnChangeText() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<JFunc_void_std__string::javaobject>()>("getOnChangeText_cxx");
     auto __result = method(_javaPart);
-    return __result != nullptr ? std::make_optional([&]() -> std::function<void(const std::string& /* value */)> {
+    return __result != nullptr ? std::make_optional([&]() -> std::function<void(const std::string& /* text */)> {
       if (__result->isInstanceOf(JFunc_void_std__string_cxx::javaClassStatic())) [[likely]] {
         auto downcast = jni::static_ref_cast<JFunc_void_std__string_cxx::javaobject>(__result);
         return downcast->cthis()->getFunction();
       } else {
-        return [__result](std::string value) -> void {
-          return __result->invoke(value);
+        return [__result](std::string text) -> void {
+          return __result->invoke(text);
         };
       }
     }()) : std::nullopt;
   }
-  void JHybridTextInputSpec::setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) {
-    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<JFunc_void_std__string::javaobject> /* onValueChange */)>("setOnValueChange_cxx");
-    method(_javaPart, onValueChange.has_value() ? JFunc_void_std__string_cxx::fromCpp(onValueChange.value()) : nullptr);
+  void JHybridTextInputSpec::setOnChangeText(const std::optional<std::function<void(const std::string& /* text */)>>& onChangeText) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<JFunc_void_std__string::javaobject> /* onChangeText */)>("setOnChangeText_cxx");
+    method(_javaPart, onChangeText.has_value() ? JFunc_void_std__string_cxx::fromCpp(onChangeText.value()) : nullptr);
+  }
+  std::optional<bool> JHybridTextInputSpec::getMultiline() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JBoolean>()>("getMultiline");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(static_cast<bool>(__result->value())) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setMultiline(std::optional<bool> multiline) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JBoolean> /* multiline */)>("setMultiline");
+    method(_javaPart, multiline.has_value() ? jni::JBoolean::valueOf(multiline.value()) : nullptr);
+  }
+  std::optional<double> JHybridTextInputSpec::getNumberOfLines() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JDouble>()>("getNumberOfLines");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(__result->value()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setNumberOfLines(std::optional<double> numberOfLines) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JDouble> /* numberOfLines */)>("setNumberOfLines");
+    method(_javaPart, numberOfLines.has_value() ? jni::JDouble::valueOf(numberOfLines.value()) : nullptr);
+  }
+  std::optional<TextInputKeyboardTypeOptions> JHybridTextInputSpec::getKeyboardType() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<JTextInputKeyboardTypeOptions>()>("getKeyboardType");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(__result->toCpp()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setKeyboardType(std::optional<TextInputKeyboardTypeOptions> keyboardType) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<JTextInputKeyboardTypeOptions> /* keyboardType */)>("setKeyboardType");
+    method(_javaPart, keyboardType.has_value() ? JTextInputKeyboardTypeOptions::fromCpp(keyboardType.value()) : nullptr);
+  }
+  std::optional<bool> JHybridTextInputSpec::getAutocorrection() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JBoolean>()>("getAutocorrection");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(static_cast<bool>(__result->value())) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setAutocorrection(std::optional<bool> autocorrection) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JBoolean> /* autocorrection */)>("setAutocorrection");
+    method(_javaPart, autocorrection.has_value() ? jni::JBoolean::valueOf(autocorrection.value()) : nullptr);
+  }
+  std::optional<TextInputVariant> JHybridTextInputSpec::getVariant() {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<JTextInputVariant>()>("getVariant");
+    auto __result = method(_javaPart);
+    return __result != nullptr ? std::make_optional(__result->toCpp()) : std::nullopt;
+  }
+  void JHybridTextInputSpec::setVariant(std::optional<TextInputVariant> variant) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<JTextInputVariant> /* variant */)>("setVariant");
+    method(_javaPart, variant.has_value() ? JTextInputVariant::fromCpp(variant.value()) : nullptr);
   }
   std::optional<std::string> JHybridTextInputSpec::getPlaceholder() {
     static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>()>("getPlaceholder");

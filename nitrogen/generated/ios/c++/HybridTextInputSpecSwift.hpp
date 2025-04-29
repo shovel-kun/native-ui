@@ -12,11 +12,16 @@
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
 
-
+// Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
+// Forward declaration of `TextInputVariant` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 
 #include <optional>
 #include <string>
 #include <functional>
+#include "TextInputKeyboardTypeOptions.hpp"
+#include "TextInputVariant.hpp"
 
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
@@ -53,19 +58,54 @@ namespace margelo::nitro::nativeui {
 
   public:
     // Properties
-    inline std::optional<std::string> getValue() noexcept override {
-      auto __result = _swiftPart.getValue();
+    inline std::optional<std::string> getDefaultValue() noexcept override {
+      auto __result = _swiftPart.getDefaultValue();
       return __result;
     }
-    inline void setValue(const std::optional<std::string>& value) noexcept override {
-      _swiftPart.setValue(value);
+    inline void setDefaultValue(const std::optional<std::string>& defaultValue) noexcept override {
+      _swiftPart.setDefaultValue(defaultValue);
     }
-    inline std::optional<std::function<void(const std::string& /* value */)>> getOnValueChange() noexcept override {
-      auto __result = _swiftPart.getOnValueChange();
+    inline std::optional<std::function<void(const std::string& /* text */)>> getOnChangeText() noexcept override {
+      auto __result = _swiftPart.getOnChangeText();
       return __result;
     }
-    inline void setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) noexcept override {
-      _swiftPart.setOnValueChange(onValueChange);
+    inline void setOnChangeText(const std::optional<std::function<void(const std::string& /* text */)>>& onChangeText) noexcept override {
+      _swiftPart.setOnChangeText(onChangeText);
+    }
+    inline std::optional<bool> getMultiline() noexcept override {
+      auto __result = _swiftPart.getMultiline();
+      return __result;
+    }
+    inline void setMultiline(std::optional<bool> multiline) noexcept override {
+      _swiftPart.setMultiline(multiline);
+    }
+    inline std::optional<double> getNumberOfLines() noexcept override {
+      auto __result = _swiftPart.getNumberOfLines();
+      return __result;
+    }
+    inline void setNumberOfLines(std::optional<double> numberOfLines) noexcept override {
+      _swiftPart.setNumberOfLines(numberOfLines);
+    }
+    inline std::optional<TextInputKeyboardTypeOptions> getKeyboardType() noexcept override {
+      auto __result = _swiftPart.getKeyboardType();
+      return __result;
+    }
+    inline void setKeyboardType(std::optional<TextInputKeyboardTypeOptions> keyboardType) noexcept override {
+      _swiftPart.setKeyboardType(keyboardType);
+    }
+    inline std::optional<bool> getAutocorrection() noexcept override {
+      auto __result = _swiftPart.getAutocorrection();
+      return __result;
+    }
+    inline void setAutocorrection(std::optional<bool> autocorrection) noexcept override {
+      _swiftPart.setAutocorrection(autocorrection);
+    }
+    inline std::optional<TextInputVariant> getVariant() noexcept override {
+      auto __result = _swiftPart.getVariant();
+      return __result;
+    }
+    inline void setVariant(std::optional<TextInputVariant> variant) noexcept override {
+      _swiftPart.setVariant(variant);
     }
     inline std::optional<std::string> getPlaceholder() noexcept override {
       auto __result = _swiftPart.getPlaceholder();

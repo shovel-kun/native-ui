@@ -10,6 +10,7 @@
 // Include C++ implementation defined types
 #include "HybridDropdownMenuSpecSwift.hpp"
 #include "HybridTextInputSpecSwift.hpp"
+#include "HybridTriStateCheckboxSpecSwift.hpp"
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
 namespace margelo::nitro::nativeui::bridge::swift {
@@ -38,11 +39,11 @@ namespace margelo::nitro::nativeui::bridge::swift {
     return swiftPart.toUnsafe();
   }
   
-  // pragma MARK: std::function<void(const std::string& /* value */)>
+  // pragma MARK: std::function<void(const std::string& /* text */)>
   Func_void_std__string create_Func_void_std__string(void* _Nonnull swiftClosureWrapper) {
     auto swiftClosure = NativeUi::Func_void_std__string::fromUnsafe(swiftClosureWrapper);
-    return [swiftClosure = std::move(swiftClosure)](const std::string& value) mutable -> void {
-      swiftClosure.call(value);
+    return [swiftClosure = std::move(swiftClosure)](const std::string& text) mutable -> void {
+      swiftClosure.call(text);
     };
   }
   
@@ -59,6 +60,30 @@ namespace margelo::nitro::nativeui::bridge::swift {
     }
   #endif
     NativeUi::HybridTextInputSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    return swiftPart.toUnsafe();
+  }
+  
+  // pragma MARK: std::function<void()>
+  Func_void create_Func_void(void* _Nonnull swiftClosureWrapper) {
+    auto swiftClosure = NativeUi::Func_void::fromUnsafe(swiftClosureWrapper);
+    return [swiftClosure = std::move(swiftClosure)]() mutable -> void {
+      swiftClosure.call();
+    };
+  }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridTriStateCheckboxSpec_cxx swiftPart = NativeUi::HybridTriStateCheckboxSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridTriStateCheckboxSpecSwift>(swiftPart);
+  }
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridTriStateCheckboxSpecSwift>(cppType);
+  #ifdef NITRO_DEBUG
+    if (swiftWrapper == nullptr) [[unlikely]] {
+      throw std::runtime_error("Class \"HybridTriStateCheckboxSpec\" is not implemented in Swift!");
+    }
+  #endif
+    NativeUi::HybridTriStateCheckboxSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
     return swiftPart.toUnsafe();
   }
 

@@ -12,16 +12,27 @@
 namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
+// Forward declaration of `HybridTriStateCheckboxSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTriStateCheckboxSpec; }
+// Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
+// Forward declaration of `TextInputVariant` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 
 // Forward declarations of Swift defined types
 // Forward declaration of `HybridDropdownMenuSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
+// Forward declaration of `HybridTriStateCheckboxSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
 
 // Include C++ defined types
 #include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include "HybridTriStateCheckboxSpec.hpp"
+#include "TextInputKeyboardTypeOptions.hpp"
+#include "TextInputVariant.hpp"
 #include <functional>
 #include <memory>
 #include <optional>
@@ -106,35 +117,62 @@ namespace margelo::nitro::nativeui::bridge::swift {
   using std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>;
   inline std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>& strong) { return strong; }
   
-  // pragma MARK: std::function<void(const std::string& /* value */)>
+  // pragma MARK: std::function<void(const std::string& /* text */)>
   /**
    * Specialized version of `std::function<void(const std::string&)>`.
    */
-  using Func_void_std__string = std::function<void(const std::string& /* value */)>;
+  using Func_void_std__string = std::function<void(const std::string& /* text */)>;
   /**
-   * Wrapper class for a `std::function<void(const std::string& / * value * /)>`, this can be used from Swift.
+   * Wrapper class for a `std::function<void(const std::string& / * text * /)>`, this can be used from Swift.
    */
   class Func_void_std__string_Wrapper final {
   public:
-    explicit Func_void_std__string_Wrapper(std::function<void(const std::string& /* value */)>&& func): _function(std::make_shared<std::function<void(const std::string& /* value */)>>(std::move(func))) {}
-    inline void call(std::string value) const {
-      _function->operator()(value);
+    explicit Func_void_std__string_Wrapper(std::function<void(const std::string& /* text */)>&& func): _function(std::make_shared<std::function<void(const std::string& /* text */)>>(std::move(func))) {}
+    inline void call(std::string text) const {
+      _function->operator()(text);
     }
   private:
-    std::shared_ptr<std::function<void(const std::string& /* value */)>> _function;
+    std::shared_ptr<std::function<void(const std::string& /* text */)>> _function;
   };
   Func_void_std__string create_Func_void_std__string(void* _Nonnull swiftClosureWrapper);
   inline Func_void_std__string_Wrapper wrap_Func_void_std__string(Func_void_std__string value) {
     return Func_void_std__string_Wrapper(std::move(value));
   }
   
-  // pragma MARK: std::optional<std::function<void(const std::string& /* value */)>>
+  // pragma MARK: std::optional<std::function<void(const std::string& /* text */)>>
   /**
-   * Specialized version of `std::optional<std::function<void(const std::string& / * value * /)>>`.
+   * Specialized version of `std::optional<std::function<void(const std::string& / * text * /)>>`.
    */
-  using std__optional_std__function_void_const_std__string_____value______ = std::optional<std::function<void(const std::string& /* value */)>>;
-  inline std::optional<std::function<void(const std::string& /* value */)>> create_std__optional_std__function_void_const_std__string_____value______(const std::function<void(const std::string& /* value */)>& value) {
-    return std::optional<std::function<void(const std::string& /* value */)>>(value);
+  using std__optional_std__function_void_const_std__string_____text______ = std::optional<std::function<void(const std::string& /* text */)>>;
+  inline std::optional<std::function<void(const std::string& /* text */)>> create_std__optional_std__function_void_const_std__string_____text______(const std::function<void(const std::string& /* text */)>& value) {
+    return std::optional<std::function<void(const std::string& /* text */)>>(value);
+  }
+  
+  // pragma MARK: std::optional<bool>
+  /**
+   * Specialized version of `std::optional<bool>`.
+   */
+  using std__optional_bool_ = std::optional<bool>;
+  inline std::optional<bool> create_std__optional_bool_(const bool& value) {
+    return std::optional<bool>(value);
+  }
+  
+  // pragma MARK: std::optional<TextInputKeyboardTypeOptions>
+  /**
+   * Specialized version of `std::optional<TextInputKeyboardTypeOptions>`.
+   */
+  using std__optional_TextInputKeyboardTypeOptions_ = std::optional<TextInputKeyboardTypeOptions>;
+  inline std::optional<TextInputKeyboardTypeOptions> create_std__optional_TextInputKeyboardTypeOptions_(const TextInputKeyboardTypeOptions& value) {
+    return std::optional<TextInputKeyboardTypeOptions>(value);
+  }
+  
+  // pragma MARK: std::optional<TextInputVariant>
+  /**
+   * Specialized version of `std::optional<TextInputVariant>`.
+   */
+  using std__optional_TextInputVariant_ = std::optional<TextInputVariant>;
+  inline std::optional<TextInputVariant> create_std__optional_TextInputVariant_(const TextInputVariant& value) {
+    return std::optional<TextInputVariant>(value);
   }
   
   // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
@@ -148,5 +186,48 @@ namespace margelo::nitro::nativeui::bridge::swift {
   // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridTextInputSpec>
   using std__weak_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridTextInputSpec>;
   inline std__weak_ptr_margelo__nitro__nativeui__HybridTextInputSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridTextInputSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& strong) { return strong; }
+  
+  // pragma MARK: std::function<void()>
+  /**
+   * Specialized version of `std::function<void()>`.
+   */
+  using Func_void = std::function<void()>;
+  /**
+   * Wrapper class for a `std::function<void()>`, this can be used from Swift.
+   */
+  class Func_void_Wrapper final {
+  public:
+    explicit Func_void_Wrapper(std::function<void()>&& func): _function(std::make_shared<std::function<void()>>(std::move(func))) {}
+    inline void call() const {
+      _function->operator()();
+    }
+  private:
+    std::shared_ptr<std::function<void()>> _function;
+  };
+  Func_void create_Func_void(void* _Nonnull swiftClosureWrapper);
+  inline Func_void_Wrapper wrap_Func_void(Func_void value) {
+    return Func_void_Wrapper(std::move(value));
+  }
+  
+  // pragma MARK: std::optional<std::function<void()>>
+  /**
+   * Specialized version of `std::optional<std::function<void()>>`.
+   */
+  using std__optional_std__function_void____ = std::optional<std::function<void()>>;
+  inline std::optional<std::function<void()>> create_std__optional_std__function_void____(const std::function<void()>& value) {
+    return std::optional<std::function<void()>>(value);
+  }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>
+  /**
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>`.
+   */
+  using std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridTriStateCheckboxSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridTriStateCheckboxSpec>& strong) { return strong; }
 
 } // namespace margelo::nitro::nativeui::bridge::swift

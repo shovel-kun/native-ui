@@ -22,6 +22,13 @@
 #include <functional>
 #include <string>
 #include <optional>
+#include <optional>
+#include <optional>
+#include "TextInputKeyboardTypeOptions.hpp"
+#include <optional>
+#include <optional>
+#include "TextInputVariant.hpp"
+#include <optional>
 #include <string>
 #include <optional>
 #include <string>
@@ -51,8 +58,13 @@ namespace margelo::nitro::nativeui::views {
                          const react::RawProps& rawProps);
 
   public:
-    CachedProp<std::optional<std::string>> value;
-    CachedProp<std::optional<std::function<void(const std::string& /* value */)>>> onValueChange;
+    CachedProp<std::optional<std::string>> defaultValue;
+    CachedProp<std::optional<std::function<void(const std::string& /* text */)>>> onChangeText;
+    CachedProp<std::optional<bool>> multiline;
+    CachedProp<std::optional<double>> numberOfLines;
+    CachedProp<std::optional<TextInputKeyboardTypeOptions>> keyboardType;
+    CachedProp<std::optional<bool>> autocorrection;
+    CachedProp<std::optional<TextInputVariant>> variant;
     CachedProp<std::optional<std::string>> placeholder;
     CachedProp<std::optional<std::string>> label;
     CachedProp<std::optional<std::function<void(const std::shared_ptr<margelo::nitro::nativeui::HybridTextInputSpec>& /* ref */)>>> hybridRef;

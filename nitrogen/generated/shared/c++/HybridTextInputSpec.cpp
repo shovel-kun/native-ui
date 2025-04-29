@@ -14,10 +14,20 @@ namespace margelo::nitro::nativeui {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
-      prototype.registerHybridGetter("value", &HybridTextInputSpec::getValue);
-      prototype.registerHybridSetter("value", &HybridTextInputSpec::setValue);
-      prototype.registerHybridGetter("onValueChange", &HybridTextInputSpec::getOnValueChange);
-      prototype.registerHybridSetter("onValueChange", &HybridTextInputSpec::setOnValueChange);
+      prototype.registerHybridGetter("defaultValue", &HybridTextInputSpec::getDefaultValue);
+      prototype.registerHybridSetter("defaultValue", &HybridTextInputSpec::setDefaultValue);
+      prototype.registerHybridGetter("onChangeText", &HybridTextInputSpec::getOnChangeText);
+      prototype.registerHybridSetter("onChangeText", &HybridTextInputSpec::setOnChangeText);
+      prototype.registerHybridGetter("multiline", &HybridTextInputSpec::getMultiline);
+      prototype.registerHybridSetter("multiline", &HybridTextInputSpec::setMultiline);
+      prototype.registerHybridGetter("numberOfLines", &HybridTextInputSpec::getNumberOfLines);
+      prototype.registerHybridSetter("numberOfLines", &HybridTextInputSpec::setNumberOfLines);
+      prototype.registerHybridGetter("keyboardType", &HybridTextInputSpec::getKeyboardType);
+      prototype.registerHybridSetter("keyboardType", &HybridTextInputSpec::setKeyboardType);
+      prototype.registerHybridGetter("autocorrection", &HybridTextInputSpec::getAutocorrection);
+      prototype.registerHybridSetter("autocorrection", &HybridTextInputSpec::setAutocorrection);
+      prototype.registerHybridGetter("variant", &HybridTextInputSpec::getVariant);
+      prototype.registerHybridSetter("variant", &HybridTextInputSpec::setVariant);
       prototype.registerHybridGetter("placeholder", &HybridTextInputSpec::getPlaceholder);
       prototype.registerHybridSetter("placeholder", &HybridTextInputSpec::setPlaceholder);
       prototype.registerHybridGetter("label", &HybridTextInputSpec::getLabel);

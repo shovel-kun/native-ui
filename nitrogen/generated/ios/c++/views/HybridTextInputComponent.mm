@@ -71,15 +71,40 @@ using namespace margelo::nitro::nativeui::views;
   // 2. Update each prop individually
   swiftPart.beforeUpdate();
 
-  // value: optional
-  if (newViewProps.value.isDirty) {
-    swiftPart.setValue(newViewProps.value.value);
-    newViewProps.value.isDirty = false;
+  // defaultValue: optional
+  if (newViewProps.defaultValue.isDirty) {
+    swiftPart.setDefaultValue(newViewProps.defaultValue.value);
+    newViewProps.defaultValue.isDirty = false;
   }
-  // onValueChange: optional
-  if (newViewProps.onValueChange.isDirty) {
-    swiftPart.setOnValueChange(newViewProps.onValueChange.value);
-    newViewProps.onValueChange.isDirty = false;
+  // onChangeText: optional
+  if (newViewProps.onChangeText.isDirty) {
+    swiftPart.setOnChangeText(newViewProps.onChangeText.value);
+    newViewProps.onChangeText.isDirty = false;
+  }
+  // multiline: optional
+  if (newViewProps.multiline.isDirty) {
+    swiftPart.setMultiline(newViewProps.multiline.value);
+    newViewProps.multiline.isDirty = false;
+  }
+  // numberOfLines: optional
+  if (newViewProps.numberOfLines.isDirty) {
+    swiftPart.setNumberOfLines(newViewProps.numberOfLines.value);
+    newViewProps.numberOfLines.isDirty = false;
+  }
+  // keyboardType: optional
+  if (newViewProps.keyboardType.isDirty) {
+    swiftPart.setKeyboardType(newViewProps.keyboardType.value);
+    newViewProps.keyboardType.isDirty = false;
+  }
+  // autocorrection: optional
+  if (newViewProps.autocorrection.isDirty) {
+    swiftPart.setAutocorrection(newViewProps.autocorrection.value);
+    newViewProps.autocorrection.isDirty = false;
+  }
+  // variant: optional
+  if (newViewProps.variant.isDirty) {
+    swiftPart.setVariant(newViewProps.variant.value);
+    newViewProps.variant.isDirty = false;
   }
   // placeholder: optional
   if (newViewProps.placeholder.isDirty) {

@@ -47,10 +47,20 @@ namespace margelo::nitro::nativeui {
 
   public:
     // Properties
-    std::optional<std::string> getValue() override;
-    void setValue(const std::optional<std::string>& value) override;
-    std::optional<std::function<void(const std::string& /* value */)>> getOnValueChange() override;
-    void setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) override;
+    std::optional<std::string> getDefaultValue() override;
+    void setDefaultValue(const std::optional<std::string>& defaultValue) override;
+    std::optional<std::function<void(const std::string& /* text */)>> getOnChangeText() override;
+    void setOnChangeText(const std::optional<std::function<void(const std::string& /* text */)>>& onChangeText) override;
+    std::optional<bool> getMultiline() override;
+    void setMultiline(std::optional<bool> multiline) override;
+    std::optional<double> getNumberOfLines() override;
+    void setNumberOfLines(std::optional<double> numberOfLines) override;
+    std::optional<TextInputKeyboardTypeOptions> getKeyboardType() override;
+    void setKeyboardType(std::optional<TextInputKeyboardTypeOptions> keyboardType) override;
+    std::optional<bool> getAutocorrection() override;
+    void setAutocorrection(std::optional<bool> autocorrection) override;
+    std::optional<TextInputVariant> getVariant() override;
+    void setVariant(std::optional<TextInputVariant> variant) override;
     std::optional<std::string> getPlaceholder() override;
     void setPlaceholder(const std::optional<std::string>& placeholder) override;
     std::optional<std::string> getLabel() override;

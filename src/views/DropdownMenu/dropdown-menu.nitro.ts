@@ -5,9 +5,9 @@ import type {
 } from 'react-native-nitro-modules'
 
 export interface DropdownMenuProps extends HybridViewProps {
-  label?: string
-  selectedIndex?: number
-  onOptionSelected?: (index: number) => void
+  label?: string | undefined
+  selectedIndex?: number | undefined
+  onOptionSelected?: ((index: number) => void) | undefined
   options: string[]
 }
 

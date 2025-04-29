@@ -42,21 +42,51 @@ abstract class HybridTextInputSpec: HybridView() {
   @get:Keep
   @set:DoNotStrip
   @set:Keep
-  abstract var value: String?
+  abstract var defaultValue: String?
   
-  abstract var onValueChange: ((value: String) -> Unit)?
+  abstract var onChangeText: ((text: String) -> Unit)?
   
-  private var onValueChange_cxx: Func_void_std__string?
+  private var onChangeText_cxx: Func_void_std__string?
     @Keep
     @DoNotStrip
     get() {
-      return onValueChange?.let { Func_void_std__string_java(it) }
+      return onChangeText?.let { Func_void_std__string_java(it) }
     }
     @Keep
     @DoNotStrip
     set(value) {
-      onValueChange = value?.let { it }
+      onChangeText = value?.let { it }
     }
+  
+  @get:DoNotStrip
+  @get:Keep
+  @set:DoNotStrip
+  @set:Keep
+  abstract var multiline: Boolean?
+  
+  @get:DoNotStrip
+  @get:Keep
+  @set:DoNotStrip
+  @set:Keep
+  abstract var numberOfLines: Double?
+  
+  @get:DoNotStrip
+  @get:Keep
+  @set:DoNotStrip
+  @set:Keep
+  abstract var keyboardType: TextInputKeyboardTypeOptions?
+  
+  @get:DoNotStrip
+  @get:Keep
+  @set:DoNotStrip
+  @set:Keep
+  abstract var autocorrection: Boolean?
+  
+  @get:DoNotStrip
+  @get:Keep
+  @set:DoNotStrip
+  @set:Keep
+  abstract var variant: TextInputVariant?
   
   @get:DoNotStrip
   @get:Keep

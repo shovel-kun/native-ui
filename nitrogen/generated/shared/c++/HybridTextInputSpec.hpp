@@ -13,11 +13,16 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
-
+// Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
+// Forward declaration of `TextInputVariant` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 
 #include <optional>
 #include <string>
 #include <functional>
+#include "TextInputKeyboardTypeOptions.hpp"
+#include "TextInputVariant.hpp"
 
 namespace margelo::nitro::nativeui {
 
@@ -46,10 +51,20 @@ namespace margelo::nitro::nativeui {
 
     public:
       // Properties
-      virtual std::optional<std::string> getValue() = 0;
-      virtual void setValue(const std::optional<std::string>& value) = 0;
-      virtual std::optional<std::function<void(const std::string& /* value */)>> getOnValueChange() = 0;
-      virtual void setOnValueChange(const std::optional<std::function<void(const std::string& /* value */)>>& onValueChange) = 0;
+      virtual std::optional<std::string> getDefaultValue() = 0;
+      virtual void setDefaultValue(const std::optional<std::string>& defaultValue) = 0;
+      virtual std::optional<std::function<void(const std::string& /* text */)>> getOnChangeText() = 0;
+      virtual void setOnChangeText(const std::optional<std::function<void(const std::string& /* text */)>>& onChangeText) = 0;
+      virtual std::optional<bool> getMultiline() = 0;
+      virtual void setMultiline(std::optional<bool> multiline) = 0;
+      virtual std::optional<double> getNumberOfLines() = 0;
+      virtual void setNumberOfLines(std::optional<double> numberOfLines) = 0;
+      virtual std::optional<TextInputKeyboardTypeOptions> getKeyboardType() = 0;
+      virtual void setKeyboardType(std::optional<TextInputKeyboardTypeOptions> keyboardType) = 0;
+      virtual std::optional<bool> getAutocorrection() = 0;
+      virtual void setAutocorrection(std::optional<bool> autocorrection) = 0;
+      virtual std::optional<TextInputVariant> getVariant() = 0;
+      virtual void setVariant(std::optional<TextInputVariant> variant) = 0;
       virtual std::optional<std::string> getPlaceholder() = 0;
       virtual void setPlaceholder(const std::optional<std::string>& placeholder) = 0;
       virtual std::optional<std::string> getLabel() = 0;

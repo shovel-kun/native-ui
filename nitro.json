@@ -16,6 +16,10 @@
     "DropdownMenu": {
       "swift": "HybridDropdownMenu",
       "kotlin": "HybridDropdownMenu"
+    },
+    "TriStateCheckbox": {
+      "swift": "HybridTriStateCheckbox",
+      "kotlin": "HybridTriStateCheckbox"
     }
   },
   "ignorePaths": ["**/node_modules"]

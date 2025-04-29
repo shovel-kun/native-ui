@@ -1,0 +1,12 @@
+{
+  "uiViewClassName": "TriStateCheckbox",
+  "supportsRawText": false,
+  "bubblingEventTypes": {},
+  "directEventTypes": {},
+  "validAttributes": {
+    "state": true,
+    "disabled": true,
+    "onPress": true,
+    "hybridRef": true
+  }
+}

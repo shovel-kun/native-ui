@@ -114,10 +114,10 @@ namespace margelo::nitro::nativeui::views {
     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
     auto& concreteShadowNode = dynamic_cast<HybridDropdownMenuShadowNode&>(shadowNode);
     const HybridDropdownMenuProps& props = concreteShadowNode.getConcreteProps();
-    const auto stateData = concreteShadowNode.getStateData();
+    HybridDropdownMenuState state = concreteShadowNode.getStateData();
 
-    auto width = stateData._width;
-    auto height = stateData._height;
+    auto width = state._width;
+    auto height = state._height;
 
     if (!isnan(width) or !isnan(height)) {
         auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
@@ -136,7 +136,6 @@ namespace margelo::nitro::nativeui::views {
 
         concreteShadowNode.setSize({width, height});
     }
-    HybridDropdownMenuState state;
     state.setProps(props);
     concreteShadowNode.setStateData(std::move(state));
   }

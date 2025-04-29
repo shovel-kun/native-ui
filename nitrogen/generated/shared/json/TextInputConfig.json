@@ -4,8 +4,13 @@
   "bubblingEventTypes": {},
   "directEventTypes": {},
   "validAttributes": {
-    "value": true,
-    "onValueChange": true,
+    "defaultValue": true,
+    "onChangeText": true,
+    "multiline": true,
+    "numberOfLines": true,
+    "keyboardType": true,
+    "autocorrection": true,
+    "variant": true,
     "placeholder": true,
     "label": true,
     "hybridRef": true

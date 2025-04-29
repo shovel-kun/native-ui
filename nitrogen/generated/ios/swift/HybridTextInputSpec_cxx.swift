@@ -97,11 +97,11 @@ public class HybridTextInputSpec_cxx {
   }
 
   // Properties
-  public final var value: bridge.std__optional_std__string_ {
+  public final var defaultValue: bridge.std__optional_std__string_ {
     @inline(__always)
     get {
       return { () -> bridge.std__optional_std__string_ in
-        if let __unwrappedValue = self.__implementation.value {
+        if let __unwrappedValue = self.__implementation.defaultValue {
           return bridge.create_std__optional_std__string_(std.string(__unwrappedValue))
         } else {
           return .init()
@@ -110,7 +110,7 @@ public class HybridTextInputSpec_cxx {
     }
     @inline(__always)
     set {
-      self.__implementation.value = { () -> String? in
+      self.__implementation.defaultValue = { () -> String? in
         if let __unwrapped = newValue.value {
           return String(__unwrapped)
         } else {
@@ -120,12 +120,12 @@ public class HybridTextInputSpec_cxx {
     }
   }
   
-  public final var onValueChange: bridge.std__optional_std__function_void_const_std__string_____value______ {
+  public final var onChangeText: bridge.std__optional_std__function_void_const_std__string_____text______ {
     @inline(__always)
     get {
-      return { () -> bridge.std__optional_std__function_void_const_std__string_____value______ in
-        if let __unwrappedValue = self.__implementation.onValueChange {
-          return bridge.create_std__optional_std__function_void_const_std__string_____value______({ () -> bridge.Func_void_std__string in
+      return { () -> bridge.std__optional_std__function_void_const_std__string_____text______ in
+        if let __unwrappedValue = self.__implementation.onChangeText {
+          return bridge.create_std__optional_std__function_void_const_std__string_____text______({ () -> bridge.Func_void_std__string in
             let __closureWrapper = Func_void_std__string(__unwrappedValue)
             return bridge.create_Func_void_std__string(__closureWrapper.toUnsafe())
           }())
@@ -136,18 +136,103 @@ public class HybridTextInputSpec_cxx {
     }
     @inline(__always)
     set {
-      self.__implementation.onValueChange = { () -> ((_ value: String) -> Void)? in
+      self.__implementation.onChangeText = { () -> ((_ text: String) -> Void)? in
         if let __unwrapped = newValue.value {
           return { () -> (String) -> Void in
             let __wrappedFunction = bridge.wrap_Func_void_std__string(__unwrapped)
-            return { (__value: String) -> Void in
-              __wrappedFunction.call(std.string(__value))
+            return { (__text: String) -> Void in
+              __wrappedFunction.call(std.string(__text))
             }
           }()
         } else {
           return nil
         }
       }()
+    }
+  }
+  
+  public final var multiline: bridge.std__optional_bool_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_bool_ in
+        if let __unwrappedValue = self.__implementation.multiline {
+          return bridge.create_std__optional_bool_(__unwrappedValue)
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.multiline = newValue.value
+    }
+  }
+  
+  public final var numberOfLines: bridge.std__optional_double_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_double_ in
+        if let __unwrappedValue = self.__implementation.numberOfLines {
+          return bridge.create_std__optional_double_(__unwrappedValue)
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.numberOfLines = newValue.value
+    }
+  }
+  
+  public final var keyboardType: bridge.std__optional_TextInputKeyboardTypeOptions_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_TextInputKeyboardTypeOptions_ in
+        if let __unwrappedValue = self.__implementation.keyboardType {
+          return bridge.create_std__optional_TextInputKeyboardTypeOptions_(__unwrappedValue)
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.keyboardType = newValue.value
+    }
+  }
+  
+  public final var autocorrection: bridge.std__optional_bool_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_bool_ in
+        if let __unwrappedValue = self.__implementation.autocorrection {
+          return bridge.create_std__optional_bool_(__unwrappedValue)
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.autocorrection = newValue.value
+    }
+  }
+  
+  public final var variant: bridge.std__optional_TextInputVariant_ {
+    @inline(__always)
+    get {
+      return { () -> bridge.std__optional_TextInputVariant_ in
+        if let __unwrappedValue = self.__implementation.variant {
+          return bridge.create_std__optional_TextInputVariant_(__unwrappedValue)
+        } else {
+          return .init()
+        }
+      }()
+    }
+    @inline(__always)
+    set {
+      self.__implementation.variant = newValue.value
     }
   }
   

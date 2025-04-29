@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
-import {TextInput, DropdownMenu} from '@shovel-kun/native-ui';
+import {TextInput, DropdownMenu, TriStateCheckbox} from '@shovel-kun/native-ui';
 
 function App(): React.JSX.Element {
   const [formData, setFormData] = useState({
@@ -10,12 +10,66 @@ function App(): React.JSX.Element {
     password: '',
   });
 
-  const countries = ['United States', 'Canada', 'United Kingdom', 'Australia'];
+  const [checkboxStates, setCheckboxStates] = useState({
+    checkbox1: 'on',
+    checkbox2: 'off',
+    checkbox3: 'indeterminate',
+    parentCheckbox: 'indeterminate',
+    disabledCheckbox: 'on',
+  });
+
+  const countries = [
+    'United States',
+    'Canada',
+    'United Kingdom',
+    'Australia',
+    'Germany',
+    'France',
+    'Mexico',
+    'Iran',
+    'Pakistan',
+    'Vietnam',
+    'Philippines',
+  ];
 
   const handleChange = (name: string, value: string) => {
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+
+  const toggleCheckbox = checkboxName => {
+    setCheckboxStates(prev => {
+      const currentState = prev[checkboxName];
+      let newState;
+
+      if (currentState === 'on') newState = 'off';
+      else if (currentState === 'off') newState = 'indeterminate';
+      else newState = 'on';
+
+      return {
+        ...prev,
+        [checkboxName]: newState,
+      };
+    });
+  };
+
+  const handleParentCheckboxPress = () => {
+    setCheckboxStates(prev => {
+      const currentState = prev.parentCheckbox;
+      let newChildState;
+
+      if (currentState === 'on') newChildState = 'off';
+      else newChildState = 'on';
+
+      return {
+        ...prev,
+        parentCheckbox: newChildState,
+        checkbox1: newChildState,
+        checkbox2: newChildState,
+        checkbox3: newChildState,
+      };
     });
   };
 
@@ -31,21 +85,16 @@ function App(): React.JSX.Element {
       <Text style={styles.title}>Registration Form</Text>
 
       <TextInput
-        label="name"
-        style={styles.input}
-        onValueChange={{f: text => handleChange('name', text)}}
-      />
-
-      <TextInput
         label="email"
+        variant="outlined"
         style={styles.input}
-        onValueChange={{f: text => handleChange('email', text)}}
+        onChangeText={{f: text => handleChange('email', text)}}
       />
 
       <TextInput
         label="password"
         style={styles.input}
-        onValueChange={{f: text => handleChange('password', text)}}
+        onChangeText={{f: text => handleChange('password', text)}}
       />
 
       <View style={styles.pickerContainer}>
@@ -66,24 +115,55 @@ function App(): React.JSX.Element {
         />
       </View>
 
+      {/* TriStateCheckbox Demo Section */}
+      <View style={styles.demoSection}>
+        <Text style={styles.sectionTitle}>TriStateCheckbox Demo</Text>
+
+        <View style={styles.checkboxRow}>
+          <Text>On State:</Text>
+          <TriStateCheckbox
+            state={checkboxStates.checkbox1}
+            onPress={{f: () => toggleCheckbox('checkbox1')}}
+          />
+        </View>
+
+        <View style={styles.checkboxRow}>
+          <Text>Off State:</Text>
+          <TriStateCheckbox
+            state={checkboxStates.checkbox2}
+            onPress={{f: () => toggleCheckbox('checkbox2')}}
+          />
+        </View>
+
+        <View style={styles.checkboxRow}>
+          <Text>Indeterminate State:</Text>
+          <TriStateCheckbox
+            state={checkboxStates.checkbox3}
+            onPress={{f: () => toggleCheckbox('checkbox3')}}
+          />
+        </View>
+
+        <View style={styles.checkboxRow}>
+          <Text>Parent Checkbox:</Text>
+          <TriStateCheckbox
+            state={checkboxStates.parentCheckbox}
+            onPress={{f: handleParentCheckboxPress}}
+          />
+        </View>
+
+        <View style={styles.checkboxRow}>
+          <Text>Disabled Checkbox:</Text>
+          <TriStateCheckbox
+            state={checkboxStates.disabledCheckbox}
+            onPress={{f: () => {}}}
+            disabled={true}
+          />
+        </View>
+      </View>
+
       <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
-
-  // return (
-  //   <View style={styles.container}>
-  //     <TextInput placeholder="meow" label={'hi'} />
-  //     <DropdownMenu
-  //       //style={styles.dropdown}
-  //       options={['hello', 'world']}
-  //       onOptionSelected={{
-  //         f: option => {
-  //           console.log(option);
-  //         },
-  //       }}
-  //     />
-  //   </View>
-  // );
 }
 
 const styles = StyleSheet.create({
@@ -91,10 +171,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-  },
-  view: {
-    width: 200,
-    height: 200,
   },
   dropdown: {
     height: 200,
@@ -122,6 +198,24 @@ const styles = StyleSheet.create({
   label: {
     marginBottom: 5,
     fontWeight: 'bold',
+  },
+  demoSection: {
+    marginVertical: 20,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 5,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  checkboxRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 8,
   },
 });
 

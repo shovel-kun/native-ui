@@ -10,49 +10,51 @@ const path = require('node:path')
 const { writeFile, readFile } = require('node:fs/promises')
 
 const androidWorkaround = async () => {
+  const nitroConfigPath = path.join(process.cwd(), 'nitro.json')
+  const nitroConfig = JSON.parse(
+    await readFile(nitroConfigPath, { encoding: 'utf8' })
+  )
+
   const androidOnLoadFile = path.join(
     process.cwd(),
     'nitrogen/generated/android',
     'NativeUiOnLoad.cpp'
   )
 
-  const textInputViewManagerFile = path.join(
-    process.cwd(),
-    'nitrogen/generated/android/kotlin/com/margelo/nitro/nativeui/views',
-    'HybridTextInputManager.kt'
-  )
+  // Process views that have kotlin autolinking
+  for (const [viewName, viewConfig] of Object.entries(
+    nitroConfig.autolinking
+  )) {
+    if ('kotlin' in viewConfig) {
+      const viewManagerFile = path.join(
+        process.cwd(),
+        'nitrogen/generated/android/kotlin/com/margelo/nitro/nativeui/views',
+        `Hybrid${viewName}Manager.kt`
+      )
 
-  const dropdownMenuViewManagerFile = path.join(
-    process.cwd(),
-    'nitrogen/generated/android/kotlin/com/margelo/nitro/nativeui/views',
-    'HybridDropdownMenuManager.kt'
-  )
+      try {
+        const viewManagerStr = await readFile(viewManagerFile, {
+          encoding: 'utf8',
+        })
+        await writeFile(
+          viewManagerFile,
+          viewManagerStr.replace(
+            /com\.margelo\.nitro\.nativeui\.\*/g,
+            'com.nativeui.*'
+          )
+        )
+      } catch (err) {
+        console.warn(
+          `Could not process view manager for ${viewName}:`,
+          err.message
+        )
+      }
+    }
+  }
 
-  const viewManagerStr = await readFile(textInputViewManagerFile, {
-    encoding: 'utf8',
-  })
-  await writeFile(
-    textInputViewManagerFile,
-    viewManagerStr.replace(
-      /com\.margelo\.nitro\.nativeui\.\*/g,
-      'com.nativeui.*'
-    )
-  )
-
-  // dropdown menu
-  const dropdownMenuViewManagerStr = await readFile(
-    dropdownMenuViewManagerFile,
-    { encoding: 'utf8' }
-  )
-  await writeFile(
-    dropdownMenuViewManagerFile,
-    dropdownMenuViewManagerStr.replace(
-      /com\.margelo\.nitro\.nativeui\.\*/g,
-      'com.nativeui.*'
-    )
-  )
-
+  // Process the main CPP file
   const str = await readFile(androidOnLoadFile, { encoding: 'utf8' })
   await writeFile(androidOnLoadFile, str.replace(/margelo\/nitro\//g, ''))
 }
+
 androidWorkaround()

@@ -11,8 +11,13 @@ import NitroModules
 /// See ``HybridTextInputSpec``
 public protocol HybridTextInputSpec_protocol: HybridObject, HybridView {
   // Properties
-  var value: String? { get set }
-  var onValueChange: ((_ value: String) -> Void)? { get set }
+  var defaultValue: String? { get set }
+  var onChangeText: ((_ text: String) -> Void)? { get set }
+  var multiline: Bool? { get set }
+  var numberOfLines: Double? { get set }
+  var keyboardType: TextInputKeyboardTypeOptions? { get set }
+  var autocorrection: Bool? { get set }
+  var variant: TextInputVariant? { get set }
   var placeholder: String? { get set }
   var label: String? { get set }
 

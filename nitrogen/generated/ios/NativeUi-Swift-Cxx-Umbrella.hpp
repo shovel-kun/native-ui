@@ -12,10 +12,22 @@
 namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
+// Forward declaration of `HybridTriStateCheckboxSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTriStateCheckboxSpec; }
+// Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
+// Forward declaration of `TextInputVariant` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TextInputVariant; }
+// Forward declaration of `TriStateCheckboxState` to properly resolve imports.
+namespace margelo::nitro::nativeui { enum class TriStateCheckboxState; }
 
 // Include C++ defined types
 #include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include "HybridTriStateCheckboxSpec.hpp"
+#include "TextInputKeyboardTypeOptions.hpp"
+#include "TextInputVariant.hpp"
+#include "TriStateCheckboxState.hpp"
 #include <functional>
 #include <memory>
 #include <optional>
@@ -35,6 +47,8 @@ namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
 namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
+// Forward declaration of `HybridTriStateCheckboxSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
 
 // Include Swift defined types
 #if __has_include("NativeUi-Swift.h")

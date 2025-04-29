@@ -3,6 +3,7 @@ package com.nativeui
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
@@ -12,6 +13,7 @@ import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -41,15 +43,16 @@ class DropdownMenuView(context: ThemedReactContext): NativeComposeView(context, 
         var expanded by remember { mutableStateOf(false) }
         val textFieldState = rememberTextFieldState(options[selectedIndex])
 
-        DynamicTheme {
-            AutoSizingComposable(shadowNodeProxy, axis = EnumSet.of(Direction.VERTICAL)) {
+        AutoSizingComposable(shadowNodeProxy, axis = EnumSet.of(Direction.VERTICAL)) {
+            DynamicTheme {
                 ExposedDropdownMenuBox(
                     expanded = expanded,
                     onExpandedChange = { expanded = it },
                 ) {
-                    TextField(
-                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
-                            .fillMaxSize(),
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+                            .fillMaxWidth(),
                         state = textFieldState,
                         readOnly = true,
                         lineLimits = TextFieldLineLimits.SingleLine,
@@ -63,7 +66,12 @@ class DropdownMenuView(context: ThemedReactContext): NativeComposeView(context, 
                     ) {
                         options.forEachIndexed { index, option ->
                             DropdownMenuItem(
-                                text = { Text(option, style = MaterialTheme.typography.bodyLarge) },
+                                text = {
+                                    Text(
+                                        option,
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+                                },
                                 onClick = {
                                     textFieldState.setTextAndPlaceCursorAtEnd(option)
                                     expanded = false

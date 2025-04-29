@@ -21,6 +21,9 @@
 #include "JHybridTextInputSpec.hpp"
 #include "JFunc_void_std__string.hpp"
 #include "views/JHybridTextInputStateUpdater.hpp"
+#include "JHybridTriStateCheckboxSpec.hpp"
+#include "JFunc_void.hpp"
+#include "views/JHybridTriStateCheckboxStateUpdater.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 #include <NitroModules/DefaultConstructableObject.hpp>
 
@@ -39,6 +42,9 @@ int initialize(JavaVM* vm) {
     margelo::nitro::nativeui::JHybridTextInputSpec::registerNatives();
     margelo::nitro::nativeui::JFunc_void_std__string_cxx::registerNatives();
     margelo::nitro::nativeui::views::JHybridTextInputStateUpdater::registerNatives();
+    margelo::nitro::nativeui::JHybridTriStateCheckboxSpec::registerNatives();
+    margelo::nitro::nativeui::JFunc_void_cxx::registerNatives();
+    margelo::nitro::nativeui::views::JHybridTriStateCheckboxStateUpdater::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(
@@ -57,6 +63,15 @@ int initialize(JavaVM* vm) {
         auto instance = object.create();
         auto globalRef = jni::make_global(instance);
         return JNISharedPtr::make_shared_from_jni<JHybridDropdownMenuSpec>(globalRef);
+      }
+    );
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "TriStateCheckbox",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridTriStateCheckboxSpec::javaobject> object("com/nativeui/HybridTriStateCheckbox");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridTriStateCheckboxSpec>(globalRef);
       }
     );
   });

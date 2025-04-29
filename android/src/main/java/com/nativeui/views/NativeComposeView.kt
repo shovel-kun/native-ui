@@ -22,12 +22,10 @@ abstract class NativeComposeView (
     override val shouldUseAndroidLayout = withHostingView
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        if (shouldUseAndroidLayout) {
+        if (shouldUseAndroidLayout && !isAttachedToWindow) {
             // In case of issues there's an alternative solution in previous commits at https://github.com/expo/expo/pull/33759
-            if (!isAttachedToWindow) {
-                setMeasuredDimension(widthMeasureSpec, heightMeasureSpec)
-                return
-            }
+            setMeasuredDimension(widthMeasureSpec, heightMeasureSpec)
+            return
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
@@ -71,6 +69,7 @@ abstract class NativeComposeView (
         addView(composeView)
     }
 
+    @Suppress("RemoveRedundantQualifierName")
     override fun addView(child: View, index: Int, params: ViewGroup.LayoutParams) {
         val view = if (child !is NativeComposeView && child !is ComposeView) {
             NativeComposeAndroidView(child)
