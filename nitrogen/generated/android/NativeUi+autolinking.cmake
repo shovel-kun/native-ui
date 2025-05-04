@@ -27,6 +27,10 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/NativeUiOnLoad.cpp
   # Shared Nitrogen C++ sources
+  ../nitrogen/generated/shared/c++/HybridBottomSheetSpec.cpp
+  ../nitrogen/generated/shared/c++/views/HybridBottomSheetComponent.cpp
+  ../nitrogen/generated/shared/c++/HybridContainerSpec.cpp
+  ../nitrogen/generated/shared/c++/views/HybridContainerComponent.cpp
   ../nitrogen/generated/shared/c++/HybridDropdownMenuSpec.cpp
   ../nitrogen/generated/shared/c++/views/HybridDropdownMenuComponent.cpp
   ../nitrogen/generated/shared/c++/HybridTextInputSpec.cpp
@@ -34,6 +38,10 @@ target_sources(
   ../nitrogen/generated/shared/c++/HybridTriStateCheckboxSpec.cpp
   ../nitrogen/generated/shared/c++/views/HybridTriStateCheckboxComponent.cpp
   # Android-specific Nitrogen C++ sources
+  ../nitrogen/generated/android/c++/JHybridBottomSheetSpec.cpp
+  ../nitrogen/generated/android/c++/views/JHybridBottomSheetStateUpdater.cpp
+  ../nitrogen/generated/android/c++/JHybridContainerSpec.cpp
+  ../nitrogen/generated/android/c++/views/JHybridContainerStateUpdater.cpp
   ../nitrogen/generated/android/c++/JHybridDropdownMenuSpec.cpp
   ../nitrogen/generated/android/c++/views/JHybridDropdownMenuStateUpdater.cpp
   ../nitrogen/generated/android/c++/JHybridTextInputSpec.cpp
