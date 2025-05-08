@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.4.1](https://github.com/shovel-kun/native-ui/compare/v0.4.0...v0.4.1) (2025-05-08)
+
 ## 0.4.0 (2025-04-25)
 
 ### ✨ Features
