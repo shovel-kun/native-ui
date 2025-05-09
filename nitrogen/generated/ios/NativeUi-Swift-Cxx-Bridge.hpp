@@ -8,6 +8,10 @@
 #pragma once
 
 // Forward declarations of C++ defined types
+// Forward declaration of `HybridBottomSheetSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridBottomSheetSpec; }
+// Forward declaration of `HybridContainerSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridContainerSpec; }
 // Forward declaration of `HybridDropdownMenuSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
@@ -20,6 +24,10 @@ namespace margelo::nitro::nativeui { enum class TextInputKeyboardTypeOptions; }
 namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 
 // Forward declarations of Swift defined types
+// Forward declaration of `HybridBottomSheetSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridBottomSheetSpec_cxx; }
+// Forward declaration of `HybridContainerSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridContainerSpec_cxx; }
 // Forward declaration of `HybridDropdownMenuSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
@@ -28,6 +36,8 @@ namespace NativeUi { class HybridTextInputSpec_cxx; }
 namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
 
 // Include C++ defined types
+#include "HybridBottomSheetSpec.hpp"
+#include "HybridContainerSpec.hpp"
 #include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
 #include "HybridTriStateCheckboxSpec.hpp"
@@ -45,6 +55,30 @@ namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
  */
 namespace margelo::nitro::nativeui::bridge::swift {
 
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>
+  /**
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>`.
+   */
+  using std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>& strong) { return strong; }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec>
+  /**
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec>`.
+   */
+  using std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridContainerSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridContainerSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridContainerSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridContainerSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec>& strong) { return strong; }
+  
   // pragma MARK: std::optional<std::string>
   /**
    * Specialized version of `std::optional<std::string>`.

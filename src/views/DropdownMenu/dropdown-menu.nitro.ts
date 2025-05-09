@@ -4,7 +4,7 @@ import type {
   HybridViewMethods,
 } from 'react-native-nitro-modules'
 
-export interface DropdownMenuProps extends HybridViewProps {
+export interface NitroDropdownMenuProps extends HybridViewProps {
   label?: string | undefined
   selectedIndex?: number | undefined
   onOptionSelected?: ((index: number) => void) | undefined
@@ -14,7 +14,7 @@ export interface DropdownMenuProps extends HybridViewProps {
 export interface DropdownMenuMethods extends HybridViewMethods {}
 
 export type DropdownMenu = HybridView<
-  DropdownMenuProps,
+  NitroDropdownMenuProps,
   DropdownMenuMethods,
   { ios: 'swift'; android: 'kotlin' }
 >

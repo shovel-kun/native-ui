@@ -20,6 +20,14 @@
     "TriStateCheckbox": {
       "swift": "HybridTriStateCheckbox",
       "kotlin": "HybridTriStateCheckbox"
+    },
+    "BottomSheet": {
+      "swift": "HybridBottomSheet",
+      "kotlin": "HybridBottomSheet"
+    },
+    "Container": {
+      "swift": "HybridContainer",
+      "kotlin": "HybridContainer"
     }
   },
   "ignorePaths": ["**/node_modules"]

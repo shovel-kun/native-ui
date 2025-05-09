@@ -1,8 +1,10 @@
 package com.nativeui.views
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -38,6 +40,7 @@ abstract class NativeComposeView (
 
         for (index in 0..<this.size) {
             val child = getChildAt(index) as? NativeComposeView ?: continue
+            Log.i("NativeComposeView", child.toString());
             child.Content()
         }
     }
@@ -72,6 +75,7 @@ abstract class NativeComposeView (
     @Suppress("RemoveRedundantQualifierName")
     override fun addView(child: View, index: Int, params: ViewGroup.LayoutParams) {
         val view = if (child !is NativeComposeView && child !is ComposeView) {
+            Log.i("NativeComposeView", "addView: NativeComposeAndroidView")
             NativeComposeAndroidView(child)
         } else {
             child

@@ -25,7 +25,7 @@ export type TextInputKeyboardTypeOptions =
   | KeyboardTypeIOS
 export type TextInputVariant = 'outlined' | 'filled' | 'basic'
 
-export interface TextInputProps extends HybridViewProps {
+export interface NitroTextInputProps extends HybridViewProps {
   /**
    * Initial value that the TextInput displays when being mounted. As the TextInput is an uncontrolled component, change the key prop if you need to change the text value.
    */
@@ -88,7 +88,7 @@ export interface TextInputProps extends HybridViewProps {
 export interface TextInputMethods extends HybridViewMethods {}
 
 export type TextInput = HybridView<
-  TextInputProps,
+  NitroTextInputProps,
   TextInputMethods,
   { ios: 'swift'; android: 'kotlin' }
 >

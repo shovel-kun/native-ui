@@ -6,7 +6,7 @@ import type {
 
 export type TriStateCheckboxState = 'on' | 'off' | 'indeterminate'
 
-export interface TriStateCheckboxProps extends HybridViewProps {
+export interface NitroTriStateCheckboxProps extends HybridViewProps {
   /**
    * Whether this checkbox is checked, unchecked, or in an indeterminate state
    */
@@ -27,7 +27,7 @@ export interface TriStateCheckboxProps extends HybridViewProps {
 export interface TriStateCheckboxMethods extends HybridViewMethods {}
 
 export type TriStateCheckbox = HybridView<
-  TriStateCheckboxProps,
+  NitroTriStateCheckboxProps,
   TriStateCheckboxMethods,
   { ios: 'swift'; android: 'kotlin' }
 >

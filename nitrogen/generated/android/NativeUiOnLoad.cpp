@@ -15,6 +15,10 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
+#include "JHybridBottomSheetSpec.hpp"
+#include "views/JHybridBottomSheetStateUpdater.hpp"
+#include "JHybridContainerSpec.hpp"
+#include "views/JHybridContainerStateUpdater.hpp"
 #include "JHybridDropdownMenuSpec.hpp"
 #include "JFunc_void_double.hpp"
 #include "views/JHybridDropdownMenuStateUpdater.hpp"
@@ -36,6 +40,10 @@ int initialize(JavaVM* vm) {
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
+    margelo::nitro::nativeui::JHybridBottomSheetSpec::registerNatives();
+    margelo::nitro::nativeui::views::JHybridBottomSheetStateUpdater::registerNatives();
+    margelo::nitro::nativeui::JHybridContainerSpec::registerNatives();
+    margelo::nitro::nativeui::views::JHybridContainerStateUpdater::registerNatives();
     margelo::nitro::nativeui::JHybridDropdownMenuSpec::registerNatives();
     margelo::nitro::nativeui::JFunc_void_double_cxx::registerNatives();
     margelo::nitro::nativeui::views::JHybridDropdownMenuStateUpdater::registerNatives();
@@ -72,6 +80,24 @@ int initialize(JavaVM* vm) {
         auto instance = object.create();
         auto globalRef = jni::make_global(instance);
         return JNISharedPtr::make_shared_from_jni<JHybridTriStateCheckboxSpec>(globalRef);
+      }
+    );
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "BottomSheet",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridBottomSheetSpec::javaobject> object("com/nativeui/HybridBottomSheet");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridBottomSheetSpec>(globalRef);
+      }
+    );
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "Container",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridContainerSpec::javaobject> object("com/nativeui/HybridContainer");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridContainerSpec>(globalRef);
       }
     );
   });
