@@ -1,13 +1,29 @@
+import React from 'react'
 import { getHostComponent, type HybridRef } from 'react-native-nitro-modules'
 import TextInputConfig from '../../../nitrogen/generated/shared/json/TextInputConfig.json'
-import type { TextInputProps, TextInputMethods } from './text-input.nitro'
+import type { NitroTextInputProps, TextInputMethods } from './text-input.nitro'
+import type { StyleProp, ViewStyle } from 'react-native'
 
-export const TextInput = getHostComponent<TextInputProps, TextInputMethods>(
+const NitroTextInput = getHostComponent<NitroTextInputProps, TextInputMethods>(
   'TextInput',
   () => TextInputConfig
 )
 
-export type TextInputRef = HybridRef<TextInputProps, TextInputMethods>
+export interface TextInputProps extends NitroTextInputProps {
+  style?: StyleProp<ViewStyle>
+}
+
+export function TextInput({ style, onChangeText, ...props }: TextInputProps) {
+  return (
+    <NitroTextInput
+      {...props}
+      style={style}
+      onChangeText={{ f: onChangeText }}
+    />
+  )
+}
+
+export type TextInputRef = HybridRef<NitroTextInputProps, TextInputMethods>
 
 export type {
   KeyboardType,

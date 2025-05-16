@@ -8,6 +8,8 @@
 #include "NativeUi-Swift-Cxx-Bridge.hpp"
 
 // Include C++ implementation defined types
+#include "HybridBottomSheetSpecSwift.hpp"
+#include "HybridContainerSpecSwift.hpp"
 #include "HybridDropdownMenuSpecSwift.hpp"
 #include "HybridTextInputSpecSwift.hpp"
 #include "HybridTriStateCheckboxSpecSwift.hpp"
@@ -15,6 +17,38 @@
 
 namespace margelo::nitro::nativeui::bridge::swift {
 
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridBottomSheetSpec_cxx swiftPart = NativeUi::HybridBottomSheetSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridBottomSheetSpecSwift>(swiftPart);
+  }
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridBottomSheetSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridBottomSheetSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridBottomSheetSpecSwift>(cppType);
+  #ifdef NITRO_DEBUG
+    if (swiftWrapper == nullptr) [[unlikely]] {
+      throw std::runtime_error("Class \"HybridBottomSheetSpec\" is not implemented in Swift!");
+    }
+  #endif
+    NativeUi::HybridBottomSheetSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    return swiftPart.toUnsafe();
+  }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridContainerSpec_cxx swiftPart = NativeUi::HybridContainerSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridContainerSpecSwift>(swiftPart);
+  }
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridContainerSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridContainerSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridContainerSpecSwift>(cppType);
+  #ifdef NITRO_DEBUG
+    if (swiftWrapper == nullptr) [[unlikely]] {
+      throw std::runtime_error("Class \"HybridContainerSpec\" is not implemented in Swift!");
+    }
+  #endif
+    NativeUi::HybridContainerSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    return swiftPart.toUnsafe();
+  }
+  
   // pragma MARK: std::function<void(double /* index */)>
   Func_void_double create_Func_void_double(void* _Nonnull swiftClosureWrapper) {
     auto swiftClosure = NativeUi::Func_void_double::fromUnsafe(swiftClosureWrapper);
