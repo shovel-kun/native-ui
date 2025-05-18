@@ -8,7 +8,7 @@ PODS:
   - hermes-engine (0.79.1):
     - hermes-engine/Pre-built (= 0.79.1)
   - hermes-engine/Pre-built (0.79.1)
-  - NativeUi (0.4.1):
+  - NativeUi (0.4.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1943,7 +1943,7 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: c32f2e405098bc1ebe30630a051ddce6f21d3c2e
-  NativeUi: 3b300bdd491ef00d7577b69fc35794f24e9f6ed4
+  NativeUi: 5aa0eaa5c00eb4a4543857319a6045306a0c2771
   NitroModules: 4e92fa5218beff179daf51714fd117e829027dd3
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: 0ada4fb1e5c5637bff940dc40b94e2d3bf96b0ab
