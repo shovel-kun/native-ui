@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
-import {TextInput, DropdownMenu, TriStateCheckbox} from '@shovel-kun/native-ui';
+import {
+  Text as BasicText,
+  TextInput,
+  DropdownMenu,
+  TriStateCheckbox,
+} from '@shovel-kun/native-ui';
 
 function App(): React.JSX.Element {
   const [formData, setFormData] = useState({
@@ -160,6 +165,8 @@ function App(): React.JSX.Element {
           />
         </View>
       </View>
+
+      <BasicText>On State lol:</BasicText>
 
       <Button title="Submit" onPress={handleSubmit} />
     </View>

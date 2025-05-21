@@ -12,6 +12,8 @@
 namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
+// Forward declaration of `HybridTextSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTextSpec; }
 // Forward declaration of `HybridTriStateCheckboxSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTriStateCheckboxSpec; }
 // Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
@@ -24,12 +26,15 @@ namespace margelo::nitro::nativeui { enum class TextInputVariant; }
 namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
+// Forward declaration of `HybridTextSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTextSpec_cxx; }
 // Forward declaration of `HybridTriStateCheckboxSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
 
 // Include C++ defined types
 #include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include "HybridTextSpec.hpp"
 #include "HybridTriStateCheckboxSpec.hpp"
 #include "TextInputKeyboardTypeOptions.hpp"
 #include "TextInputVariant.hpp"
@@ -116,6 +121,18 @@ namespace margelo::nitro::nativeui::bridge::swift {
   // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>
   using std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>;
   inline std__weak_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridDropdownMenuSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridDropdownMenuSpec>& strong) { return strong; }
+  
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec>
+  /**
+   * Specialized version of `std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec>`.
+   */
+  using std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_ = std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec>;
+  std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::nativeui::HybridTextSpec>
+  using std__weak_ptr_margelo__nitro__nativeui__HybridTextSpec_ = std::weak_ptr<margelo::nitro::nativeui::HybridTextSpec>;
+  inline std__weak_ptr_margelo__nitro__nativeui__HybridTextSpec_ weakify_std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_(const std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec>& strong) { return strong; }
   
   // pragma MARK: std::function<void(const std::string& /* text */)>
   /**

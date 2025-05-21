@@ -34,7 +34,8 @@ public class NativeUiPackage extends TurboReactPackage {
     return Arrays.asList(
       new HybridTextInputManager(),
       new HybridDropdownMenuManager(),
-      new HybridTriStateCheckboxManager()
+      new HybridTriStateCheckboxManager(),
+      new HybridTextManager()
     );
   }
 

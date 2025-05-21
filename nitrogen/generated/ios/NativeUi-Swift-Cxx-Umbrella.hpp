@@ -12,6 +12,8 @@
 namespace margelo::nitro::nativeui { class HybridDropdownMenuSpec; }
 // Forward declaration of `HybridTextInputSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTextInputSpec; }
+// Forward declaration of `HybridTextSpec` to properly resolve imports.
+namespace margelo::nitro::nativeui { class HybridTextSpec; }
 // Forward declaration of `HybridTriStateCheckboxSpec` to properly resolve imports.
 namespace margelo::nitro::nativeui { class HybridTriStateCheckboxSpec; }
 // Forward declaration of `TextInputKeyboardTypeOptions` to properly resolve imports.
@@ -24,6 +26,7 @@ namespace margelo::nitro::nativeui { enum class TriStateCheckboxState; }
 // Include C++ defined types
 #include "HybridDropdownMenuSpec.hpp"
 #include "HybridTextInputSpec.hpp"
+#include "HybridTextSpec.hpp"
 #include "HybridTriStateCheckboxSpec.hpp"
 #include "TextInputKeyboardTypeOptions.hpp"
 #include "TextInputVariant.hpp"
@@ -47,6 +50,8 @@ namespace margelo::nitro::nativeui { enum class TriStateCheckboxState; }
 namespace NativeUi { class HybridDropdownMenuSpec_cxx; }
 // Forward declaration of `HybridTextInputSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTextInputSpec_cxx; }
+// Forward declaration of `HybridTextSpec_cxx` to properly resolve imports.
+namespace NativeUi { class HybridTextSpec_cxx; }
 // Forward declaration of `HybridTriStateCheckboxSpec_cxx` to properly resolve imports.
 namespace NativeUi { class HybridTriStateCheckboxSpec_cxx; }
 

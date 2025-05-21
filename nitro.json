@@ -20,6 +20,10 @@
     "TriStateCheckbox": {
       "swift": "HybridTriStateCheckbox",
       "kotlin": "HybridTriStateCheckbox"
+    },
+    "Text": {
+      "swift": "HybridText",
+      "kotlin": "HybridText"
     }
   },
   "ignorePaths": ["**/node_modules"]
