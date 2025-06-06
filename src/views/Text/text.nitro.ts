@@ -5,12 +5,12 @@ import type {
 } from 'react-native-nitro-modules'
 
 export interface TextProps extends HybridViewProps {
-  text: string
+  text?: string
 }
 
 export interface TextMethods extends HybridViewMethods {}
 
-export type Text = HybridView<
+export type NitroText = HybridView<
   TextProps,
   TextMethods,
   { ios: 'swift'; android: 'kotlin' }

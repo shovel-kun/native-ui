@@ -9,8 +9,8 @@
 
 // Include C++ implementation defined types
 #include "HybridDropdownMenuSpecSwift.hpp"
+#include "HybridNitroTextSpecSwift.hpp"
 #include "HybridTextInputSpecSwift.hpp"
-#include "HybridTextSpecSwift.hpp"
 #include "HybridTriStateCheckboxSpecSwift.hpp"
 #include "NativeUi-Swift-Cxx-Umbrella.hpp"
 
@@ -40,19 +40,19 @@ namespace margelo::nitro::nativeui::bridge::swift {
     return swiftPart.toUnsafe();
   }
   
-  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec>
-  std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_(void* _Nonnull swiftUnsafePointer) {
-    NativeUi::HybridTextSpec_cxx swiftPart = NativeUi::HybridTextSpec_cxx::fromUnsafe(swiftUnsafePointer);
-    return std::make_shared<margelo::nitro::nativeui::HybridTextSpecSwift>(swiftPart);
+  // pragma MARK: std::shared_ptr<margelo::nitro::nativeui::HybridNitroTextSpec>
+  std::shared_ptr<margelo::nitro::nativeui::HybridNitroTextSpec> create_std__shared_ptr_margelo__nitro__nativeui__HybridNitroTextSpec_(void* _Nonnull swiftUnsafePointer) {
+    NativeUi::HybridNitroTextSpec_cxx swiftPart = NativeUi::HybridNitroTextSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::nativeui::HybridNitroTextSpecSwift>(swiftPart);
   }
-  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridTextSpec_ cppType) {
-    std::shared_ptr<margelo::nitro::nativeui::HybridTextSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridTextSpecSwift>(cppType);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__nativeui__HybridNitroTextSpec_(std__shared_ptr_margelo__nitro__nativeui__HybridNitroTextSpec_ cppType) {
+    std::shared_ptr<margelo::nitro::nativeui::HybridNitroTextSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::nativeui::HybridNitroTextSpecSwift>(cppType);
   #ifdef NITRO_DEBUG
     if (swiftWrapper == nullptr) [[unlikely]] {
-      throw std::runtime_error("Class \"HybridTextSpec\" is not implemented in Swift!");
+      throw std::runtime_error("Class \"HybridNitroTextSpec\" is not implemented in Swift!");
     }
   #endif
-    NativeUi::HybridTextSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
+    NativeUi::HybridNitroTextSpec_cxx& swiftPart = swiftWrapper->getSwiftPart();
     return swiftPart.toUnsafe();
   }
   

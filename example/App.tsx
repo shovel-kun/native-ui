@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
 import {
-  Text as BasicText,
+  NitroText,
   TextInput,
   DropdownMenu,
   TriStateCheckbox,
@@ -102,13 +102,27 @@ function App(): React.JSX.Element {
         onChangeText={{f: text => handleChange('password', text)}}
       />
 
+      <NitroText text="なるほど、バカ" style={styles.input} />
+
       <View style={styles.pickerContainer}>
         <Text style={styles.label}>Country:</Text>
         <DropdownMenu
           label="Choose a country"
           selectedIndex={1}
           options={countries}
-          style={{borderColor: 'red', borderRadius: 1}}
+          onOptionSelected={{
+            f: index => {
+              setFormData({
+                ...formData,
+                country: countries[index],
+              });
+            },
+          }}
+        />
+        <DropdownMenu
+          label="Choose a country"
+          selectedIndex={1}
+          options={countries}
           onOptionSelected={{
             f: index => {
               setFormData({
@@ -121,52 +135,51 @@ function App(): React.JSX.Element {
       </View>
 
       {/* TriStateCheckbox Demo Section */}
-      <View style={styles.demoSection}>
-        <Text style={styles.sectionTitle}>TriStateCheckbox Demo</Text>
+      {/* <View style={styles.demoSection}> */}
+      {/*   <Text style={styles.sectionTitle}>TriStateCheckbox Demo</Text> */}
+      {/**/}
+      {/*   <View style={styles.checkboxRow}> */}
+      {/*     <Text>On State:</Text> */}
+      {/*     <TriStateCheckbox */}
+      {/*       state={checkboxStates.checkbox1} */}
+      {/*       onPress={{f: () => toggleCheckbox('checkbox1')}} */}
+      {/*     /> */}
+      {/*   </View> */}
+      {/**/}
+      {/*   <View style={styles.checkboxRow}> */}
+      {/*     <TriStateCheckbox */}
+      {/*       state={checkboxStates.checkbox2} */}
+      {/*       onPress={{f: () => toggleCheckbox('checkbox2')}} */}
+      {/*     /> */}
+      {/*   </View> */}
+      {/**/}
+      {/*   <View style={styles.checkboxRow}> */}
+      {/*     <Text>Indeterminate State:</Text> */}
+      {/*     <TriStateCheckbox */}
+      {/*       state={checkboxStates.checkbox3} */}
+      {/*       onPress={{f: () => toggleCheckbox('checkbox3')}} */}
+      {/*     /> */}
+      {/*   </View> */}
+      {/**/}
+      {/*   <View style={styles.checkboxRow}> */}
+      {/*     <Text>Parent Checkbox:</Text> */}
+      {/*     <TriStateCheckbox */}
+      {/*       state={checkboxStates.parentCheckbox} */}
+      {/*       onPress={{f: handleParentCheckboxPress}} */}
+      {/*     /> */}
+      {/*   </View> */}
+      {/**/}
+      {/*   <View style={styles.checkboxRow}> */}
+      {/*     <Text>Disabled Checkbox:</Text> */}
+      {/*     <TriStateCheckbox */}
+      {/*       state={checkboxStates.disabledCheckbox} */}
+      {/*       onPress={{f: () => {}}} */}
+      {/*       disabled={true} */}
+      {/*     /> */}
+      {/*   </View> */}
+      {/* </View> */}
 
-        <View style={styles.checkboxRow}>
-          <Text>On State:</Text>
-          <TriStateCheckbox
-            state={checkboxStates.checkbox1}
-            onPress={{f: () => toggleCheckbox('checkbox1')}}
-          />
-        </View>
-
-        <View style={styles.checkboxRow}>
-          <Text>Off State:</Text>
-          <TriStateCheckbox
-            state={checkboxStates.checkbox2}
-            onPress={{f: () => toggleCheckbox('checkbox2')}}
-          />
-        </View>
-
-        <View style={styles.checkboxRow}>
-          <Text>Indeterminate State:</Text>
-          <TriStateCheckbox
-            state={checkboxStates.checkbox3}
-            onPress={{f: () => toggleCheckbox('checkbox3')}}
-          />
-        </View>
-
-        <View style={styles.checkboxRow}>
-          <Text>Parent Checkbox:</Text>
-          <TriStateCheckbox
-            state={checkboxStates.parentCheckbox}
-            onPress={{f: handleParentCheckboxPress}}
-          />
-        </View>
-
-        <View style={styles.checkboxRow}>
-          <Text>Disabled Checkbox:</Text>
-          <TriStateCheckbox
-            state={checkboxStates.disabledCheckbox}
-            onPress={{f: () => {}}}
-            disabled={true}
-          />
-        </View>
-      </View>
-
-      <BasicText>On State lol:</BasicText>
+      {/* <BasicText>On State lol:</BasicText> */}
 
       <Button title="Submit" onPress={handleSubmit} />
     </View>

@@ -211,9 +211,9 @@ fun BasicText(
         } else {
             null
         }
-//    val hasInlineContent = text.hasInlineContent()
-//    val hasLinks = text.hasLinks()
-//    if (!hasInlineContent && !hasLinks) {
+    val hasInlineContent = text.hasInlineContent()
+    val hasLinks = text.hasLinks()
+    if (!hasInlineContent && !hasLinks) {
         // this is the same as text: String, use all the early exits
         Layout(
             modifier =
@@ -235,36 +235,36 @@ fun BasicText(
                 ),
             EmptyMeasurePolicy
         )
-//    } else {
-//        // takes into account text substitution (for translation) that is happening inside the
-//        // TextAnnotatedStringNode
-//        var displayedText by remember(text) { mutableStateOf(text) }
-//
-//        LayoutWithLinksAndInlineContent(
-//            modifier = modifier,
-//            text = displayedText,
-//            onTextLayout = onTextLayout,
-//            hasInlineContent = hasInlineContent,
-//            inlineContent = inlineContent,
-//            style = style,
-//            overflow = overflow,
-//            softWrap = softWrap,
-//            maxLines = maxLines,
-//            minLines = minLines,
-//            fontFamilyResolver = LocalFontFamilyResolver.current,
-//            selectionController = selectionController,
-//            color = color,
-//            onShowTranslation = { substitutionValue ->
-//                displayedText =
-//                    if (substitutionValue.isShowingSubstitution) {
-//                        substitutionValue.substitution
-//                    } else {
-//                        substitutionValue.original
-//                    }
-//            },
-//            autoSize = autoSize
-//        )
-//    }
+    } else {
+        // takes into account text substitution (for translation) that is happening inside the
+        // TextAnnotatedStringNode
+        var displayedText by remember(text) { mutableStateOf(text) }
+
+        LayoutWithLinksAndInlineContent(
+            modifier = modifier,
+            text = displayedText,
+            onTextLayout = onTextLayout,
+            hasInlineContent = hasInlineContent,
+            inlineContent = inlineContent,
+            style = style,
+            overflow = overflow,
+            softWrap = softWrap,
+            maxLines = maxLines,
+            minLines = minLines,
+            fontFamilyResolver = LocalFontFamilyResolver.current,
+            selectionController = selectionController,
+            color = color,
+            onShowTranslation = { substitutionValue ->
+                displayedText =
+                    if (substitutionValue.isShowingSubstitution) {
+                        substitutionValue.substitution
+                    } else {
+                        substitutionValue.original
+                    }
+            },
+            autoSize = autoSize
+        )
+    }
 }
 
 /**

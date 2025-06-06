@@ -1,14 +1,14 @@
-import React from 'react'
+// import React from 'react'
 import { getHostComponent, type HybridRef } from 'react-native-nitro-modules'
-import TextConfig from '../../../nitrogen/generated/shared/json/TextConfig.json'
+import NitroTextConfig from '../../../nitrogen/generated/shared/json/NitroTextConfig.json'
 import type {
   TextProps as NitroTextProps,
   TextMethods as NitroTextMethods,
 } from './text.nitro'
 
-export const Text = getHostComponent<NitroTextProps, NitroTextMethods>(
-  'Text',
-  () => TextConfig
+export const NitroText = getHostComponent<NitroTextProps, NitroTextMethods>(
+  'NitroText',
+  () => NitroTextConfig
 )
 
 export type TextRef = HybridRef<NitroTextProps, NitroTextMethods>

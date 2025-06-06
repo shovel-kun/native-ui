@@ -22,7 +22,6 @@ import androidx.compose.foundation.text.modifiers.MinLinesConstrainer
 import androidx.compose.foundation.text.modifiers.finalConstraints
 import androidx.compose.foundation.text.modifiers.finalMaxLines
 
-import androidx.compose.foundation.text.DefaultMinLines
 import androidx.compose.foundation.text.ceilToIntPx
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.MultiParagraph

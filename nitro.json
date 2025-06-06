@@ -21,7 +21,7 @@
       "swift": "HybridTriStateCheckbox",
       "kotlin": "HybridTriStateCheckbox"
     },
-    "Text": {
+    "NitroText": {
       "swift": "HybridText",
       "kotlin": "HybridText"
     }

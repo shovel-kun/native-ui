@@ -29,8 +29,8 @@ target_sources(
   # Shared Nitrogen C++ sources
   ../nitrogen/generated/shared/c++/HybridDropdownMenuSpec.cpp
   ../nitrogen/generated/shared/c++/views/HybridDropdownMenuComponent.cpp
-  ../nitrogen/generated/shared/c++/HybridTextSpec.cpp
-  ../nitrogen/generated/shared/c++/views/HybridTextComponent.cpp
+  ../nitrogen/generated/shared/c++/HybridNitroTextSpec.cpp
+  ../nitrogen/generated/shared/c++/views/HybridNitroTextComponent.cpp
   ../nitrogen/generated/shared/c++/HybridTextInputSpec.cpp
   ../nitrogen/generated/shared/c++/views/HybridTextInputComponent.cpp
   ../nitrogen/generated/shared/c++/HybridTriStateCheckboxSpec.cpp
@@ -38,8 +38,8 @@ target_sources(
   # Android-specific Nitrogen C++ sources
   ../nitrogen/generated/android/c++/JHybridDropdownMenuSpec.cpp
   ../nitrogen/generated/android/c++/views/JHybridDropdownMenuStateUpdater.cpp
-  ../nitrogen/generated/android/c++/JHybridTextSpec.cpp
-  ../nitrogen/generated/android/c++/views/JHybridTextStateUpdater.cpp
+  ../nitrogen/generated/android/c++/JHybridNitroTextSpec.cpp
+  ../nitrogen/generated/android/c++/views/JHybridNitroTextStateUpdater.cpp
   ../nitrogen/generated/android/c++/JHybridTextInputSpec.cpp
   ../nitrogen/generated/android/c++/views/JHybridTextInputStateUpdater.cpp
   ../nitrogen/generated/android/c++/JHybridTriStateCheckboxSpec.cpp

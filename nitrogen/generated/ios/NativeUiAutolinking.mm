@@ -13,7 +13,7 @@
 #include "HybridTextInputSpecSwift.hpp"
 #include "HybridDropdownMenuSpecSwift.hpp"
 #include "HybridTriStateCheckboxSpecSwift.hpp"
-#include "HybridTextSpecSwift.hpp"
+#include "HybridNitroTextSpecSwift.hpp"
 
 @interface NativeUiAutolinking : NSObject
 @end
@@ -46,9 +46,9 @@
     }
   );
   HybridObjectRegistry::registerHybridObjectConstructor(
-    "Text",
+    "NitroText",
     []() -> std::shared_ptr<HybridObject> {
-      std::shared_ptr<margelo::nitro::nativeui::HybridTextSpec> hybridObject = NativeUi::NativeUiAutolinking::createText();
+      std::shared_ptr<margelo::nitro::nativeui::HybridNitroTextSpec> hybridObject = NativeUi::NativeUiAutolinking::createNitroText();
       return hybridObject;
     }
   );

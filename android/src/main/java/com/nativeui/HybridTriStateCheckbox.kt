@@ -1,12 +1,16 @@
 package com.nativeui
 
+import androidx.annotation.Keep
 import androidx.compose.ui.state.ToggleableState
+import com.facebook.proguard.annotations.DoNotStrip
 import com.facebook.react.uimanager.ThemedReactContext
 import com.margelo.nitro.nativeui.HybridTriStateCheckboxSpec
 import com.margelo.nitro.nativeui.TriStateCheckboxState
 
+@Keep
+@DoNotStrip
 class HybridTriStateCheckbox(val context: ThemedReactContext): HybridTriStateCheckboxSpec() {
-
+    // View
     override val view = TriStateCheckboxView(context)
 
     // Props
