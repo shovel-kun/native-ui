@@ -53,7 +53,7 @@
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/jest": "^29.5.14",
     "@types/react": "^19.0.10",
-    "nitro-codegen": "^0.25.2",
+    "nitro-codegen": "^0.26.2",
     "react": "19.0.0",
     "react-native": "0.79.3",
     "react-native-builder-bob": "^0.40.11",
@@ -166,6 +166,6 @@
     "react-native-nitro-modules"
   ],
   "patchedDependencies": {
-    "nitro-codegen@0.25.2": "patches/nitro-codegen@0.25.2.patch"
+    "nitro-codegen@0.26.2": "patches/nitro-codegen@0.26.2.patch"
   }
 }

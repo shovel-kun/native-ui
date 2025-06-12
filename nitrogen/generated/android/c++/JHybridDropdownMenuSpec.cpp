@@ -59,8 +59,9 @@ namespace margelo::nitro::nativeui {
         auto downcast = jni::static_ref_cast<JFunc_void_double_cxx::javaobject>(__result);
         return downcast->cthis()->getFunction();
       } else {
-        return [__result](double index) -> void {
-          return __result->invoke(index);
+        auto __resultRef = jni::make_global(__result);
+        return [__resultRef](double index) -> void {
+          return __resultRef->invoke(index);
         };
       }
     }()) : std::nullopt;

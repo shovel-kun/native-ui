@@ -7,7 +7,7 @@
 
 package com.margelo.nitro.nativeui.views
 
-import com.facebook.react.fabric.StateWrapperImpl
+import com.facebook.react.uimanager.StateWrapper
 import com.margelo.nitro.nativeui.*
 
 internal class HybridTextInputStateUpdater {
@@ -18,6 +18,6 @@ internal class HybridTextInputStateUpdater {
      */
     @Suppress("KotlinJniMissingFunction")
     @JvmStatic
-    external fun updateViewProps(view: HybridTextInputSpec, state: StateWrapperImpl)
+    external fun updateViewProps(view: HybridTextInputSpec, state: StateWrapper)
   }
 }

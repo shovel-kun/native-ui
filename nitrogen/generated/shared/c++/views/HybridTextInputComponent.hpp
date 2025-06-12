@@ -79,7 +79,6 @@ namespace margelo::nitro::nativeui::views {
   class HybridTextInputState final {
   public:
     HybridTextInputState() = default;
-
     HybridTextInputState(float width, float height) {
         if (width >= 0) {
             _width = width;

@@ -1,0 +1,101 @@
+diff --git a/lib/views/CppHybridViewComponent.js b/lib/views/CppHybridViewComponent.js
+index 329cac0a8c95a8051f9f7aee320764c97025d0ec..847b598ef3ef18ef9eb43ad9b278a25c8d5a0709 100644
+--- a/lib/views/CppHybridViewComponent.js
++++ b/lib/views/CppHybridViewComponent.js
+@@ -91,6 +91,18 @@ namespace ${namespace} {
+   class ${stateClassName} final {
+   public:
+     ${stateClassName}() = default;
++    ${stateClassName}(float width, float height) {
++        if (width >= 0) {
++            _width = width;
++        } else {
++            _width = std::numeric_limits<float>::quiet_NaN();
++        }
++        if (height >= 0) {
++            _height = height;
++        } else {
++            _height = std::numeric_limits<float>::quiet_NaN();
++        }
++    };
+ 
+   public:
+     void setProps(const ${propsClassName}& props) { _props.emplace(props); }
+@@ -98,7 +110,9 @@ namespace ${namespace} {
+ 
+   public:
+ #ifdef ANDROID
+-  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic /* data */) {}
++  ${stateClassName}(const ${stateClassName}& /* previousState */, folly::dynamic data)
++      : _width((float)data["width"].getDouble()),
++        _height((float)data["height"].getDouble()){};
+   folly::dynamic getDynamic() const {
+     throw std::runtime_error("${stateClassName} does not support folly!");
+   }
+@@ -107,6 +121,9 @@ namespace ${namespace} {
+   };
+ #endif
+ 
++  float _width = std::numeric_limits<float>::quiet_NaN();
++  float _height = std::numeric_limits<float>::quiet_NaN();
++
+   private:
+     std::optional<${propsClassName}> _props;
+   };
+@@ -225,7 +242,28 @@ namespace ${namespace} {
+     // On Android, we need to wrap props in our state, which gets routed through Java and later unwrapped in JNI/C++.
+     auto& concreteShadowNode = dynamic_cast<${shadowNodeClassName}&>(shadowNode);
+     const ${propsClassName}& props = concreteShadowNode.getConcreteProps();
+-    ${stateClassName} state;
++    ${stateClassName} state = concreteShadowNode.getStateData();
++
++    auto width = state._width;
++    auto height = state._height;
++
++    if (!isnan(width) or !isnan(height)) {
++        auto const &props = *std::static_pointer_cast<const facebook::react::ViewProps>(concreteShadowNode.getProps());
++
++        // The node has width and/or height set as style props, so we should not override it
++        auto widthProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Width);
++        auto heightProp = props.yogaStyle.dimension(facebook::yoga::Dimension::Height);
++
++        if (widthProp.value().isDefined()) {
++            // view has fixed dimension size set in props, so we should not autosize it in that axis
++            width = widthProp.value().unwrap();
++        }
++        if (heightProp.value().isDefined()) {
++            height = heightProp.value().unwrap();
++        }
++
++        concreteShadowNode.setSize({width, height});
++    }
+     state.setProps(props);
+     concreteShadowNode.setStateData(std::move(state));
+   }
+diff --git a/lib/views/kotlin/KotlinHybridViewManager.js b/lib/views/kotlin/KotlinHybridViewManager.js
+index d6106bcc37da09dfff17140ad2794ef90fd22330..7440964bcb70606b8d9eabebd88e3872daccf416 100644
+--- a/lib/views/kotlin/KotlinHybridViewManager.js
++++ b/lib/views/kotlin/KotlinHybridViewManager.js
+@@ -23,12 +23,12 @@ ${createFileMetadataString(`${manager}.kt`)}
+ package ${javaSubNamespace}
+ 
+ import android.view.View
+-import com.facebook.react.fabric.StateWrapperImpl
+ import com.facebook.react.uimanager.ReactStylesDiffMap
+ import com.facebook.react.uimanager.SimpleViewManager
+ import com.facebook.react.uimanager.StateWrapper
+ import com.facebook.react.uimanager.ThemedReactContext
+ import ${javaNamespace}.*
++import com.nativeui.views.*
+ 
+ /**
+  * Represents the React Native \`ViewManager\` for the "${spec.name}" Nitro HybridView.
+@@ -54,6 +54,8 @@ class ${manager}: SimpleViewManager<View>() {
+ 
+   override fun updateState(view: View, props: ReactStylesDiffMap, stateWrapper: StateWrapper): Any? {
+     val hybridView = views[view] ?: throw Error("Couldn't find view $view in local views table!")
++    val view = hybridView.view as? NativeView ?: return null
++    view.stateWrapper = stateWrapper
+ 
+     // 1. Update each prop individually
+     hybridView.beforeUpdate()

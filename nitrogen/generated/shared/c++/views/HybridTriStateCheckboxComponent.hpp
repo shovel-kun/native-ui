@@ -61,7 +61,6 @@ namespace margelo::nitro::nativeui::views {
   class HybridTriStateCheckboxState final {
   public:
     HybridTriStateCheckboxState() = default;
-
     HybridTriStateCheckboxState(float width, float height) {
         if (width >= 0) {
             _width = width;

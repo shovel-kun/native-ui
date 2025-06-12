@@ -65,7 +65,6 @@ namespace margelo::nitro::nativeui::views {
   class HybridDropdownMenuState final {
   public:
     HybridDropdownMenuState() = default;
-
     HybridDropdownMenuState(float width, float height) {
         if (width >= 0) {
             _width = width;

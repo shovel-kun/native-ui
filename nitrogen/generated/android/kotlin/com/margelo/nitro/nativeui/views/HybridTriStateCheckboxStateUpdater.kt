@@ -7,7 +7,7 @@
 
 package com.margelo.nitro.nativeui.views
 
-import com.facebook.react.fabric.StateWrapperImpl
+import com.facebook.react.uimanager.StateWrapper
 import com.margelo.nitro.nativeui.*
 
 internal class HybridTriStateCheckboxStateUpdater {
@@ -18,6 +18,6 @@ internal class HybridTriStateCheckboxStateUpdater {
      */
     @Suppress("KotlinJniMissingFunction")
     @JvmStatic
-    external fun updateViewProps(view: HybridTriStateCheckboxSpec, state: StateWrapperImpl)
+    external fun updateViewProps(view: HybridTriStateCheckboxSpec, state: StateWrapper)
   }
 }

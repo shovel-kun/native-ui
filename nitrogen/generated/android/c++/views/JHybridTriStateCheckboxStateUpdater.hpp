@@ -12,6 +12,7 @@
 #include <react/fabric/CoreComponentsRegistry.h>
 #include <react/renderer/core/ConcreteComponentDescriptor.h>
 #include <NitroModules/NitroDefines.hpp>
+#include <NitroModules/JStateWrapper.hpp>
 #include "JHybridTriStateCheckboxSpec.hpp"
 #include "views/HybridTriStateCheckboxComponent.hpp"
 
@@ -26,7 +27,7 @@ public:
 public:
   static void updateViewProps(jni::alias_ref<jni::JClass> /* class */,
                               jni::alias_ref<JHybridTriStateCheckboxSpec::javaobject> view,
-                              jni::alias_ref<react::StateWrapperImpl::javaobject> stateWrapper);
+                              jni::alias_ref<JStateWrapper::javaobject> stateWrapperInterface);
 
 public:
   static void registerNatives() {
