@@ -9,9 +9,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.facebook.react.uimanager.PixelUtil.pxToDp
 
 /**
- * An ExpoComposeView for [AndroidView] wrapping with existing view
+ * A NativeComposeView for [AndroidView] wrapping with existing view
  */
-class NativeComposeAndroidView(private val view: View) : NativeComposeView(view.context) {
+internal class NativeComposeAndroidView(private val view: View) : NativeComposeView(view.context) {
     @Composable
     override fun Content() {
         AndroidView(

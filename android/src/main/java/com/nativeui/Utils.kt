@@ -63,7 +63,7 @@ fun getImageVector(icon: String?): ImageVector? {
         val clazz = Class.forName("androidx.compose.material.icons.$theme.${name}Kt")
         clazz.declaredMethods[0].invoke(clazz::class, null) as ImageVector
     } catch (e: Exception) {
-        Log.w("ExpoUI", "The icon $icon couldn't be found.")
+        Log.w("NativeUi", "The icon $icon couldn't be found.")
         return null
     }
 }
