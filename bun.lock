@@ -10,7 +10,7 @@
         "@types/jest": "^29.5.14",
         "@types/react": "^19.0.10",
         "nitro-codegen": "^0.26.2",
-        "react": "19.0.0",
+        "react": "19.1.0",
         "react-native": "0.79.3",
         "react-native-builder-bob": "^0.40.11",
         "react-native-nitro-modules": "^0.25.2",
@@ -27,7 +27,7 @@
       "name": "native-ui-example",
       "version": "0.0.1",
       "dependencies": {
-        "react": "19.0.0",
+        "react": "19.1.0",
         "react-native": "0.79.3",
         "react-native-nitro-modules": "^0.26.2",
       },
@@ -2102,6 +2102,8 @@
     "metro-transform-worker/metro-cache": ["metro-cache@0.82.4", "", { "dependencies": { "exponential-backoff": "^3.1.1", "flow-enums-runtime": "^0.0.6", "https-proxy-agent": "^7.0.5", "metro-core": "0.82.4" } }, "sha512-vX0ylSMGtORKiZ4G8uP6fgfPdDiCWvLZUGZ5zIblSGylOX6JYhvExl0Zg4UA9pix/SSQu5Pnp9vdODMFsNIxhw=="],
 
     "micromatch/picomatch": ["picomatch@2.3.1", "", {}, "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA=="],
+
+    "native-ui-example/react": ["react@19.1.0", "", {}, "sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg=="],
 
     "new-github-release-url/type-fest": ["type-fest@2.19.0", "", {}, "sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA=="],
 
