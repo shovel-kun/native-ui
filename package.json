@@ -51,7 +51,7 @@
     "@jamesacarr/eslint-formatter-github-actions": "^0.2.0",
     "@release-it/bumper": "^7.0.5",
     "@release-it/conventional-changelog": "^10.0.1",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "nitro-codegen": "^0.26.2",
     "react": "19.1.0",
