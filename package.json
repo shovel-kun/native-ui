@@ -54,7 +54,7 @@
     "@types/jest": "^29.5.14",
     "@types/react": "^19.1.8",
     "nitro-codegen": "^0.26.2",
-    "react": "19.1.0",
+    "react": "19.2.0",
     "react-native": "0.80.0",
     "react-native-builder-bob": "^0.40.11",
     "react-native-nitro-modules": "^0.26.2",
